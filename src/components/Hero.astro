@@ -4,7 +4,7 @@ import { siteConfig } from "../config";
 
 <div
   id="hero"
-  class="relative isolate overflow-hidden bg-gray-900 py-24 md:h-screen"
+  class="relative isolate overflow-hidden bg-gradient-to-b from-gray-900 via-gray-900 to-gray-850 py-24 md:h-screen"
   style={`--accent-color: ${siteConfig.accentColor}`}
 >
   <!-- Gradient overlay -->
@@ -147,7 +147,7 @@ import { siteConfig } from "../config";
       height="100%"
       stroke-width={0}></rect>
   </svg>
-  <div class="h-full mx-auto p-8 sm:p-12 md:p-24 flex items-center">
+  <div class="h-full mx-auto p-8 sm:p-12 md:p-16 lg:p-24 flex items-center">
     <div class="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
       <!-- Profile Photo -->
       <div class="flex-shrink-0">
@@ -170,7 +170,7 @@ import { siteConfig } from "../config";
           Hello! 👋
         </h2>
         <h1
-          class="mt-8 sm:mt-10 md:mt-12 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-white animate-fade-in animation-delay-200 leading-none"
+          class="mt-8 sm:mt-10 md:mt-12 text-pretty text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight text-white animate-fade-in animation-delay-200 leading-none"
         >
           I'm <span style={{ color: siteConfig.accentColor }}
             >{siteConfig.name}</span
@@ -185,7 +185,7 @@ import { siteConfig } from "../config";
     </div>
   </div>
   <div
-    class="absolute bottom-0 left-0 right-0 p-8 sm:p-12 md:p-24 flex gap-x-4 sm:gap-x-6 md:gap-x-8 text-gray-300 animate-fade-in animation-delay-600"
+    class="absolute bottom-0 left-0 right-0 p-8 sm:p-12 md:p-16 lg:p-24 flex gap-x-4 sm:gap-x-6 md:gap-x-8 text-gray-300 animate-fade-in animation-delay-600"
   >
     {
       siteConfig.social?.email && (
@@ -335,6 +335,9 @@ import { siteConfig } from "../config";
       )
     }
   </div>
+  
+  <!-- Gradient transition to next section -->
+  <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-gray-800 pointer-events-none z-20"></div>
 </div>
 
 <style>
