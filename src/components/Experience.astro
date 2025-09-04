@@ -35,9 +35,10 @@ const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
                   )}
 
                   {/* Experience card */}
-                  <div class="relative bg-gradient-to-br from-gray-800/90 via-gray-800/80 to-gray-700/90 rounded-xl shadow-lg border border-gray-700/50 p-6 sm:p-7 md:p-8 hover:shadow-xl hover:from-gray-700/90 hover:via-gray-700/80 hover:to-gray-600/90 hover:border-blue-500/30 transition-all duration-300 group">
-                    <!-- Gradient Overlay on Hover -->
-                    <div class="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div class="relative bg-gradient-to-br from-gray-800/90 via-gray-800/80 to-gray-700/90 rounded-xl shadow-lg border border-gray-700/50 p-6 sm:p-7 md:p-8 transition-all duration-300 group hover:shadow-xl hover:-translate-y-1">
+                    <!-- Unified hover glow overlay to match other sections -->
+                    <div class="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style="background: linear-gradient(90deg, color-mix(in oklab, var(--accent-color) 14%, transparent), color-mix(in oklab, var(--accent-secondary, #a78bfa) 14%, transparent));"></div>
                     
                     <div class="relative z-10">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
