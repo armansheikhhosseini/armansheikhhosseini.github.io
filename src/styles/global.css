@@ -122,3 +122,78 @@ html {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
+
+/* Unified UI tokens */
+:root {
+  --accent-secondary: var(--accent-secondary, #a78bfa);
+}
+
+.section-title {
+  color: #ffffff;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  /* clamp for responsive sizes ~ 3xl to 7xl */
+  font-size: clamp(1.875rem, 1.2rem + 2.2vw, 4.5rem);
+}
+
+.section-underline {
+  width: 75px;
+  height: 5px;
+  margin-top: 1rem;
+  border-radius: 9999px;
+  background: var(--accent-color);
+}
+
+.card-base {
+  background: linear-gradient(135deg, rgba(31, 41, 55, 0.9), rgba(55, 65, 81, 0.9));
+  border-color: rgba(75, 85, 99, 0.5);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0.75rem; /* rounded-xl */
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  position: relative;
+}
+
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.4);
+}
+
+.card-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: linear-gradient(90deg,
+    color-mix(in oklab, var(--accent-color) 14%, transparent),
+    color-mix(in oklab, var(--accent-secondary, #a78bfa) 14%, transparent)
+  );
+}
+
+.card-hover:hover .card-overlay {
+  opacity: 1;
+}
+
+.badge-accent {
+  background: var(--accent-color);
+  color: #ffffff;
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.dot-accent {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--accent-color) 75%, white);
+}

@@ -10,13 +10,8 @@ const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
       <div class="relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           <div class="lg:col-span-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-white leading-tight tracking-tight">
-              Experience
-            </h2>
-            <div
-              class="w-[75px] h-[5px] mt-4 rounded-full"
-              style={`background-color: ${siteConfig.accentColor}`}
-            />
+            <h2 class="section-title">Experience</h2>
+            <div class="section-underline" />
           </div>
 
           <div class="lg:col-span-8">
@@ -35,10 +30,8 @@ const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
                   )}
 
                   {/* Experience card */}
-                  <div class="relative bg-gradient-to-br from-gray-800/90 via-gray-800/80 to-gray-700/90 rounded-xl shadow-lg border border-gray-700/50 p-6 sm:p-7 md:p-8 transition-all duration-300 group hover:shadow-xl hover:-translate-y-1">
-                    <!-- Unified hover glow overlay to match other sections -->
-                    <div class="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      style="background: linear-gradient(90deg, color-mix(in oklab, var(--accent-color) 14%, transparent), color-mix(in oklab, var(--accent-secondary, #a78bfa) 14%, transparent));"></div>
+                  <div class="relative p-6 sm:p-7 md:p-8 rounded-xl card-base card-hover group">
+                    <div class="card-overlay"></div>
                     
                     <div class="relative z-10">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
@@ -61,7 +54,7 @@ const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
                     <ul class="space-y-4">
                       {exp.bullets.map((bullet) => (
                         <li class="flex items-start">
-                          <span class="inline-block w-2 h-2 rounded-full bg-blue-400 mt-2.5 mr-4 flex-shrink-0" />
+                          <span class="dot-accent mt-2.5 mr-4 flex-shrink-0" />
                           <span class="text-base sm:text-lg text-gray-300 leading-relaxed tracking-wide">
                             {bullet}
                           </span>

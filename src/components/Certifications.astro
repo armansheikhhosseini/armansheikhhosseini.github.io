@@ -7,13 +7,8 @@ import { siteConfig } from "../config";
   <div class="relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
       <div class="lg:col-span-5">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-white leading-tight tracking-tight">
-          Certifications
-        </h2>
-        <div
-          class="w-[75px] h-[5px] mt-4 rounded-full"
-          style={`background-color: ${siteConfig.accentColor}`}
-        />
+  <h2 class="section-title">Certifications</h2>
+  <div class="section-underline" />
         <p class="text-gray-300 mt-6 text-lg sm:text-xl leading-relaxed mb-8 lg:mb-0">
           Professional certifications demonstrating expertise in cloud computing, cybersecurity, and infrastructure management.
         </p>
@@ -23,12 +18,10 @@ import { siteConfig } from "../config";
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
           {siteConfig.certifications.map((cert, index) => (
             <div 
-              class="group relative bg-gradient-to-br from-gray-800/90 via-gray-800/80 to-gray-700/90 rounded-xl p-6 border border-gray-700/50 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cert-card"
+              class="group relative p-6 rounded-xl card-base card-hover cert-card"
               style={`animation-delay: ${index * 0.1}s`}
             >
-              <!-- Unified hover glow overlay -->
-              <div class="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                   style="background: linear-gradient(90deg, color-mix(in oklab, var(--accent-color) 14%, transparent), color-mix(in oklab, var(--accent-secondary, #a78bfa) 14%, transparent));"></div>
+              <div class="card-overlay"></div>
               <div class="relative space-y-4 z-10">
                 <!-- Category Badge and Icon row -->
                 <div class="flex items-center justify-between">
