@@ -1,0 +1,321 @@
+---
+import { siteConfig } from "../config";
+---
+
+<section id="cloud" class="relative overflow-hidden bg-transparent py-20 md:py-28">
+  <!-- Background drifting clouds -->
+  <div class="absolute inset-0 -z-10 pointer-events-none">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+    <div class="cloud c4"></div>
+    <svg class="netlines" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#60a5fa"/>
+          <stop offset="100%" stop-color="#a78bfa"/>
+        </linearGradient>
+      </defs>
+      <g stroke="url(#glow)" stroke-width="2" fill="none" stroke-linecap="round" class="net">
+        <path d="M50,320 C300,280 400,180 650,140 S950,100 990,80" class="pulse" />
+        <path d="M20,360 C260,300 420,260 700,180 S920,120 990,110" class="pulse delay1" />
+        <path d="M10,300 C200,240 380,210 620,160 S900,140 990,130" class="pulse delay2" />
+      </g>
+    </svg>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-6 sm:px-10">
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white">
+        <span style={{ color: siteConfig.accentColor }}>Cloud Systems Live</span>
+      </h2>
+      <p class="mt-3 text-gray-300/90 max-w-2xl mx-auto">
+        A living cloud stack—reactive network, realtime gauges, and a mini‑cluster humming in sync.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
+      <!-- Left: Interactive telemetry -->
+      <div class="glass-card rounded-2xl p-6 md:p-8 bg-white/5 shadow-xl border border-white/10">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-xl md:text-2xl font-semibold text-white">Telemetry</h3>
+          <div class="flex items-center gap-2">
+            <span class="h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_12px_2px_rgba(16,185,129,0.6)]"></span>
+            <span class="text-sm text-gray-300">Live</span>
+          </div>
+        </div>
+
+        <!-- CPU Gauge -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 items-center">
+          <div class="flex items-center justify-center">
+            <div id="cpu-gauge" class="relative select-none">
+              <svg width="180" height="180" viewBox="0 0 180 180">
+                <defs>
+                  <linearGradient id="cpuGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#60a5fa" />
+                    <stop offset="100%" stop-color="#a78bfa" />
+                  </linearGradient>
+                  <filter id="cpuGlow"><feGaussianBlur stdDeviation="3.5"/></filter>
+                </defs>
+                <circle cx="90" cy="90" r="70" stroke="#1f2937" stroke-width="16" fill="none" />
+                <circle id="cpu-glow" cx="90" cy="90" r="70" stroke="url(#cpuGrad)" stroke-width="18" fill="none"
+                        stroke-linecap="round" transform="rotate(-90 90 90)" stroke-dasharray="439.82" stroke-dashoffset="439.82"
+                        filter="url(#cpuGlow)" opacity="0.7"/>
+                <circle id="cpu-progress" cx="90" cy="90" r="70" stroke="url(#cpuGrad)" stroke-width="16" fill="none"
+                        stroke-linecap="round" transform="rotate(-90 90 90)" stroke-dasharray="439.82" stroke-dashoffset="439.82"/>
+              </svg>
+              <div class="absolute inset-0 grid place-items-center">
+                <div class="text-center">
+                  <div class="text-4xl font-bold" style={{ color: siteConfig.accentColor }}>
+                    <span id="cpu-percent">0</span>%
+                  </div>
+                  <div class="text-xs uppercase tracking-wide text-gray-300">CPU Utilization</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mini-metrics -->
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-300">Memory</span><span id="mem-label" class="text-gray-200">0%</span></div>
+              <div class="h-3 bg-white/10 rounded-full overflow-hidden relative">
+                <div class="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-500/30 blur-sm"></div>
+                <div id="mem-bar" class="h-full w-0 bg-gradient-to-r from-blue-500 to-purple-500 transition-[width] duration-500"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1.5"><span class="text-gray-300">Network</span><span id="net-label" class="text-gray-200">0 Mbps</span></div>
+              <div class="h-3 bg-white/10 rounded-full overflow-hidden relative">
+                <div class="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-emerald-500/30 to-cyan-500/30 blur-sm"></div>
+                <div id="net-bar" class="h-full w-0 bg-gradient-to-r from-emerald-500 to-cyan-500 transition-[width] duration-500"></div>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-3 pt-2">
+              <button id="stress-btn" class="px-3 py-1.5 rounded-md bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm btn-hover-lift border border-white/10">Stress test</button>
+              <button id="reset-btn" class="px-3 py-1.5 rounded-md bg-white/10 text-white text-sm hover:bg-white/15 transition-colors border border-white/10">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Server rack -->
+      <div class="glass-card rounded-2xl p-6 md:p-8 bg-white/5 shadow-xl border border-white/10">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-xl md:text-2xl font-semibold text-white">Cluster: core-eu-west-1</h3>
+          <span class="text-xs text-gray-300">k8s v1.30</span>
+        </div>
+        <div class="rack">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div class="unit" data-unit={i + 1}>
+              <div class="row">
+                <div class="label">srv-{i + 1}</div>
+                <div class="leds"><span class="led green"></span><span class="led amber"></span><span class="led red"></span></div>
+              </div>
+              <div class="bars">
+                <div class="bar cpu"><div class="fill" style="width: 0%"></div></div>
+                <div class="bar io"><div class="fill" style="width: 0%"></div></div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="mt-6 grid grid-cols-2 gap-4 text-sm text-gray-300">
+          <div>Pods: <span id="pods" class="text-white font-semibold">0</span></div>
+          <div>Requests/s: <span id="rps" class="text-white font-semibold">0</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</section>
+
+<script>
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const circle = document.getElementById('cpu-progress');
+  const cpuGlow = document.getElementById('cpu-glow');
+  const cpuLabel = document.getElementById('cpu-percent');
+  const memBar = document.getElementById('mem-bar');
+  const memLabel = document.getElementById('mem-label');
+  const netBar = document.getElementById('net-bar');
+  const netLabel = document.getElementById('net-label');
+  const pods = document.getElementById('pods');
+  const rps = document.getElementById('rps');
+  const stressBtn = document.getElementById('stress-btn');
+  const resetBtn = document.getElementById('reset-btn');
+  const units = Array.from(document.querySelectorAll('.unit'));
+
+  const CIRCUMFERENCE = 2 * Math.PI * 70; // r=70
+  let cpu = 12;
+  let mem = 22;
+  let net = 8; // Mbps
+  let load = 0.25; // baseline intensity 0..1
+  let stress = false;
+  let motion = 0.4; // scales volatility 0..1
+
+  function setCpu(v) {
+    const clamped = Math.max(0, Math.min(100, v));
+    const offset = CIRCUMFERENCE * (1 - clamped / 100);
+    if (circle) circle.style.strokeDashoffset = offset.toFixed(2);
+  if (cpuGlow) cpuGlow.style.strokeDashoffset = offset.toFixed(2);
+    if (cpuLabel) cpuLabel.textContent = clamped.toFixed(0);
+  }
+
+  function setBar(el, pct) {
+    if (!el) return;
+    el.style.width = Math.max(0, Math.min(100, pct)).toFixed(0) + '%';
+  }
+
+  function rand(n = 1) {
+    return (Math.random() * 2 - 1) * n;
+  }
+
+  function tick() {
+    // Smoother transitions and lower jitter for the gauge
+    const trend = stress ? 0.18 : 0.035; // smaller step -> smoother
+    const targetCpu = stress ? 85 + rand(2) * motion : 20 + load * 40 + rand(2) * motion;
+    cpu += (targetCpu - cpu) * trend;
+
+    // Lightly smooth other metrics too
+    const targetMem = stress ? 74 + rand(3) * motion : 28 + load * 40 + rand(3) * motion;
+    mem += (targetMem - mem) * 0.06;
+
+    const targetNet = stress ? 320 + rand(25) * motion : 30 + load * 220 + rand(20) * motion;
+    net += (targetNet - net) * 0.1;
+
+    setCpu(cpu);
+    setBar(memBar, mem);
+    if (memLabel) memLabel.textContent = mem.toFixed(0) + '%';
+    const netPct = Math.min(100, net / 500 * 100);
+    setBar(netBar, netPct);
+    if (netLabel) netLabel.textContent = Math.max(0, net).toFixed(0) + ' Mbps';
+
+    // Aggregate numbers
+    const totalPods = Math.floor(60 + load * 80 + (stress ? 50 : 0) + rand(10));
+    const totalRps = Math.floor(400 + load * 1200 + (stress ? 1200 : 0) + rand(120));
+    if (pods) pods.textContent = String(totalPods);
+    if (rps) rps.textContent = String(totalRps);
+
+    // Per-unit bars and LEDs
+    units.forEach((u, idx) => {
+      const cpuEl = u.querySelector('.bar.cpu .fill');
+      const ioEl = u.querySelector('.bar.io .fill');
+      const phase = (idx / units.length);
+      const unitLoad = (0.35 + 0.35 * Math.sin(Date.now() / 1200 + phase * Math.PI * 2)) * (stress ? 1 : load) + (stress ? 0.25 : 0);
+      const cpuPct = 15 + unitLoad * 65 + rand(3) * motion;
+      const ioPct = 10 + unitLoad * 55 + rand(4) * motion;
+      setBar(cpuEl, cpuPct);
+      setBar(ioEl, ioPct);
+      // LED blink
+      const leds = u.querySelectorAll('.led');
+      leds.forEach((led, i) => {
+        const on = Math.random() > 0.6 - unitLoad * 0.3 + (i === 0 ? 0.1 : 0);
+        led.classList.toggle('on', on);
+      });
+    });
+  }
+
+  let rafId;
+  function loop() {
+    tick();
+    rafId = window.setTimeout(loop, prefersReduced ? 1000 : 800);
+  }
+
+  // Controls
+  stressBtn?.addEventListener('click', () => { stress = true; load = 0.9; motion = 0.9; });
+  resetBtn?.addEventListener('click', () => { stress = false; load = 0.25; motion = 0.4; });
+
+  // Parallax
+  const clouds = Array.from(document.querySelectorAll('.cloud'));
+  let lastX = 0, lastY = 0, raf;
+  window.addEventListener('mousemove', (e) => {
+    if (prefersReduced) return;
+    lastX = (e.clientX / window.innerWidth - 0.5);
+    lastY = (e.clientY / window.innerHeight - 0.5);
+    if (!raf) {
+      raf = requestAnimationFrame(() => {
+        clouds.forEach((c, i) => {
+          const depth = (i + 1) * 6;
+          c.style.transform = `translate(${lastX * depth}px, ${lastY * depth}px)`;
+        });
+        raf = 0;
+      });
+    }
+  });
+
+  // Init
+  circle?.style.setProperty('stroke-dasharray', String(CIRCUMFERENCE));
+  circle?.style.setProperty('stroke-dashoffset', String(CIRCUMFERENCE));
+  loop();
+</script>
+
+<style>
+  /* Cloud shapes */
+  #cpu-gauge::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border-radius: 9999px;
+    background: radial-gradient(60% 60% at 50% 50%, rgba(96,165,250,0.25), transparent 60%),
+                radial-gradient(70% 70% at 50% 50%, rgba(167,139,250,0.2), transparent 70%);
+    filter: blur(14px);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .cloud {
+    position: absolute;
+    width: 240px;
+    height: 120px;
+    background: radial-gradient(120px 80px at 30% 60%, rgba(255,255,255,0.12), rgba(255,255,255,0.06) 60%, transparent 70%),
+                radial-gradient(100px 70px at 60% 40%, rgba(255,255,255,0.12), rgba(255,255,255,0.05) 60%, transparent 70%),
+                radial-gradient(80px 60px at 80% 70%, rgba(255,255,255,0.1), rgba(255,255,255,0.05) 60%, transparent 70%);
+  /* blur removed */
+    border-radius: 999px;
+    opacity: 0.35;
+    animation: drift 40s linear infinite;
+  }
+  .c1 { top: 10%; left: -10%; animation-duration: 60s; }
+  .c2 { top: 50%; left: -20%; animation-duration: 70s; }
+  .c3 { top: 25%; left: -15%; animation-duration: 55s; }
+  .c4 { top: 70%; left: -25%; animation-duration: 65s; }
+
+  @keyframes drift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(140%); }
+  }
+
+  /* Network lines pulse */
+  .netlines { position: absolute; inset: 0; opacity: 0.5; }
+  .pulse { stroke-dasharray: 6 8; animation: dash 1.8s ease-in-out infinite; }
+  .pulse.delay1 { animation-delay: 0.4s; }
+  .pulse.delay2 { animation-delay: 0.9s; }
+  @keyframes dash { to { stroke-dashoffset: -60; } }
+
+  /* Rack */
+  .rack { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .unit { background: rgba(17, 24, 39, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px 12px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); }
+  .row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .label { font-size: 12px; color: #cbd5e1; letter-spacing: 0.05em; text-transform: uppercase; }
+  .leds { display: flex; gap: 6px; }
+  .led { width: 8px; height: 8px; border-radius: 50%; opacity: 0.25; transition: opacity 120ms; }
+  .led.green { background: #10b981; }
+  .led.amber { background: #f59e0b; }
+  .led.red { background: #ef4444; }
+  .led.on { opacity: 1; }
+  .bars { display: grid; gap: 6px; }
+  .bar { height: 8px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; }
+  .bar .fill { height: 100%; width: 0; }
+  .bar.cpu .fill { background: linear-gradient(90deg, #60a5fa, #a78bfa); transition: width 260ms ease; }
+  .bar.io .fill { background: linear-gradient(90deg, #34d399, #06b6d4); transition: width 320ms ease; }
+
+  @media (min-width: 768px) {
+    .rack { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Respect reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    .cloud { animation: none; }
+    .pulse { animation: none; }
+  }
+</style>

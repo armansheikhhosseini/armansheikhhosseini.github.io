@@ -9,13 +9,21 @@ const hasCertifications = siteConfig.certifications && siteConfig.certifications
 
 <header
   id="header"
-  class="fixed top-0 left-0 right-0 z-50 hidden md:block transition-all duration-300 bg-gray-900/80 backdrop-blur-md"
+  class="fixed top-0 left-0 right-0 z-50 hidden md:block transition-all duration-300 bg-gray-900/80"
 >
   <!-- Scroll Progress Bar -->
   <div class="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300" id="scroll-progress"></div>
   
   <nav class="max-w-7xl mx-auto px-8 py-4">
     <ul class="flex items-center gap-8 justify-center">
+      <li>
+        <a
+          href="#cloud"
+          class="nav-link text-gray-300 hover:text-white transition-all duration-300 font-medium relative"
+        >
+          Cloud
+        </a>
+      </li>
       <li>
         <a
           href="#about"
@@ -84,9 +92,9 @@ const hasCertifications = siteConfig.certifications && siteConfig.certifications
     
     // Header background on scroll
     if (scrollY > 100) {
-      header?.classList.add("bg-gray-900/90", "backdrop-blur-md");
+      header?.classList.add("bg-gray-900/90");
     } else {
-      header?.classList.remove("bg-gray-900/90", "backdrop-blur-md");
+      header?.classList.remove("bg-gray-900/90");
     }
     
     // Scroll progress bar

@@ -4,18 +4,9 @@ import { siteConfig } from "../config";
 
 <div
   id="hero"
-  class="relative isolate overflow-hidden bg-gradient-to-b from-gray-900 via-gray-900 to-gray-850 py-24 md:h-screen"
+  class="relative isolate overflow-hidden bg-transparent py-24 md:h-screen"
   style={`--accent-color: ${siteConfig.accentColor}`}
 >
-  <!-- Gradient overlay -->
-  <div
-    class="absolute inset-0 -z-10"
-    style={`background: 
-      radial-gradient(ellipse 1200px 800px at 10% 20%, ${siteConfig.accentColor}25 0%, ${siteConfig.accentColor}15 25%, transparent 50%),
-      radial-gradient(ellipse 800px 1200px at 90% 80%, rgba(147, 51, 234, 0.2) 0%, rgba(147, 51, 234, 0.1) 25%, transparent 50%),
-      linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(17, 24, 39, 0.8) 50%, rgb(17, 24, 39) 100%)`}
-  >
-  </div>
   
   <!-- Animated Background Elements -->
   <div class="absolute inset-0 -z-10 overflow-hidden">
@@ -26,127 +17,9 @@ import { siteConfig } from "../config";
     <div class="floating-particle particle-4"></div>
     <div class="floating-particle particle-5"></div>
     
-    <!-- Geometric Shapes -->
-    <div class="geometric-shape shape-1"></div>
-    <div class="geometric-shape shape-2"></div>
-    <div class="geometric-shape shape-3"></div>
+  <!-- Cloud Computing Iconography: dynamically generated each visit -->
+  <div id="cc-icons" class="absolute inset-0 -z-10 pointer-events-none"></div>
   </div>
-  <svg
-    aria-hidden="true"
-    class="absolute inset-0 -z-10 size-full stroke-gray-700 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
-  >
-    <defs>
-      <pattern
-        x="50%"
-        y={-1}
-        id="0787a7c5-978c-4f66-83c7-11c213f99cb7"
-        width={200}
-        height={200}
-        patternUnits="userSpaceOnUse"
-      >
-        <path d="M.5 200V.5H200" fill="none"></path>
-      </pattern>
-      <pattern
-        id="programming-symbols"
-        x="0"
-        y="0"
-        width="400"
-        height="400"
-        patternUnits="userSpaceOnUse"
-      >
-        <text
-          x="50"
-          y="50"
-          fill={siteConfig.accentColor}
-          font-family="monospace"
-          font-size="24"
-          transform="rotate(-15)">&lt;/&gt;</text
-        >
-        <text
-          x="150"
-          y="100"
-          fill={siteConfig.accentColor}
-          font-family="monospace"
-          font-size="20"
-          transform="rotate(10)">{}</text
-        >
-        <text
-          x="250"
-          y="80"
-          fill={siteConfig.accentColor}
-          font-family="monospace"
-          font-size="18"
-          transform="rotate(-5)">=&gt;</text
-        >
-        <text
-          x="100"
-          y="200"
-          fill={siteConfig.accentColor}
-          font-family="monospace"
-          font-size="22"
-          transform="rotate(15)">[]</text
-        >
-        <text
-          x="300"
-          y="180"
-          fill={siteConfig.accentColor}
-          font-family="monospace"
-          font-size="20"
-          transform="rotate(-10)">&lt;&gt;</text
-        >
-        <text
-          x="200"
-          y="250"
-          fill={siteConfig.accentColor}
-          font-family="monospace"
-          font-size="24"
-          transform="rotate(5)">()</text
-        >
-        <text
-          x="50"
-          y="320"
-          fill={siteConfig.accentColor}
-          font-family="monospace"
-          font-size="18"
-          transform="rotate(-8)">::</text
-        >
-        <text
-          x="350"
-          y="300"
-          fill={siteConfig.accentColor}
-          font-family="monospace"
-          font-size="22"
-          transform="rotate(12)">==</text
-        >
-        <text
-          x="150"
-          y="350"
-          fill={siteConfig.accentColor}
-          font-family="monospace"
-          font-size="20"
-          transform="rotate(-15)">++</text
-        >
-        <text
-          x="250"
-          y="370"
-          fill={siteConfig.accentColor}
-          font-family="monospace"
-          font-size="24"
-          transform="rotate(8)">;</text
-        >
-      </pattern>
-    </defs>
-    <rect
-      fill="url(#programming-symbols)"
-      width="100%"
-      height="100%"
-      opacity="0.2"></rect>
-    <rect
-      fill="url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)"
-      width="100%"
-      height="100%"
-      stroke-width={0}></rect>
-  </svg>
   <div class="h-full mx-auto p-8 sm:p-12 md:p-16 lg:p-24 flex items-center">
     <div class="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
       <!-- Profile Photo -->
@@ -336,8 +209,7 @@ import { siteConfig } from "../config";
     }
   </div>
   
-  <!-- Gradient transition to next section -->
-  <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-gray-800 pointer-events-none z-20"></div>
+  
 </div>
 
 <style>
@@ -441,7 +313,7 @@ import { siteConfig } from "../config";
     position: absolute;
     border-radius: 50%;
     pointer-events: none;
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    /* glow removed */
   }
 
   .particle-1 {
@@ -504,7 +376,6 @@ import { siteConfig } from "../config";
     position: absolute;
     border: 2px solid rgba(59, 130, 246, 0.4);
     pointer-events: none;
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
   }
 
   .shape-1 {
@@ -592,4 +463,165 @@ import { siteConfig } from "../config";
   .social-icon:hover::before {
     opacity: 1;
   }
+
+  /* Dynamic cloud-computing icons */
+  #cc-icons .cc-icon { position: absolute; color: var(--accent-color); opacity: 0.6; /* drop-shadow removed */ will-change: transform; }
+  #cc-icons .cc-icon svg { display: block; width: 40px; height: 40px; stroke: currentColor; }
 </style>
+
+<script>
+  // Dynamically spawn and animate cloud-computing icons with increasing randomness per visit
+  document.addEventListener('DOMContentLoaded', () => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const layer = document.getElementById('cc-icons');
+    const hero = document.getElementById('hero');
+    if (!layer || !hero) return;
+
+    const accent = getComputedStyle(hero).getPropertyValue('--accent-color') || '#60a5fa';
+
+    // Generic cloud-computing glyphs (currentColor-stroked)
+    const ICONS = [
+      // Cloud
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5-1.5A3.5 3.5 0 0 0 7 18z'/></svg>",
+      // Cloud upload
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5-1.5A3.5 3.5 0 0 0 7 18z'/><path d='M12 14V8'/><path d='M9.5 10.5 12 8l2.5 2.5'/></svg>",
+      // Cloud download
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5-1.5A3.5 3.5 0 0 0 7 18z'/><path d='M12 10v6'/><path d='M9.5 13.5 12 16l2.5-2.5'/></svg>",
+      // Cloud sync
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5-1.5A3.5 3.5 0 0 0 7 18z'/><path d='M9 12a4 4 0 0 1 6 0'/><path d='M9 12l-1.5-1.5M9 12l-1.5 1.5M15 12l1.5-1.5M15 12l1.5 1.5'/></svg>",
+      // Server rack
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='4' y='5' width='16' height='4' rx='1'/><rect x='4' y='10' width='16' height='4' rx='1'/><rect x='4' y='15' width='16' height='4' rx='1'/><circle cx='6' cy='7' r='.6'/><circle cx='6' cy='12' r='.6'/><circle cx='6' cy='17' r='.6'/></svg>",
+      // CPU
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='7' y='7' width='10' height='10' rx='2'/><path d='M9 3v3M15 3v3M9 21v-3M15 21v-3M3 9h3M3 15h3M21 9h-3M21 15h-3'/></svg>",
+      // Database
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><ellipse cx='12' cy='6' rx='6' ry='3'/><path d='M6 6v6c0 1.7 2.7 3 6 3s6-1.3 6-3V6'/><path d='M6 12v6c0 1.7 2.7 3 6 3s6-1.3 6-3v-6'/></svg>",
+      // Container
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='7' width='18' height='10' rx='2'/><path d='M7 7v10M11 7v10M15 7v10'/></svg>",
+      // Network
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='6' cy='6' r='3'/><circle cx='18' cy='6' r='3'/><circle cx='12' cy='18' r='3'/><path d='M8.7 7.7L10.5 10m2.9 0 1.8-2.3M12 14.1V12'/></svg>",
+      // Load balancer
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='6' r='2.5'/><path d='M12 8.5v5'/><path d='M6 18l6-4 6 4'/></svg>",
+      // Shield / firewall
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z'/></svg>",
+      // Storage bucket
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M5 7h14l-1 11a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3L5 7z'/><path d='M7 7a5 3 0 0 0 10 0'/></svg>",
+      // Function (bolt)
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M13 3L4 14h7l-1 7 9-11h-7z'/></svg>",
+  // Monitoring (wave)
+  "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 12h3l2 5 4-10 3 7h3'/></svg>",
+      // API gateway
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7 8h4M7 12h6M7 16h4'/><path d='M18 8v8'/><path d='M16 10h4M16 14h4'/></svg>",
+      // CDN / globe
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='9'/><path d='M3 12h18'/><path d='M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18'/></svg>",
+      // Lock (IAM)
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='5' y='11' width='14' height='9' rx='2'/><path d='M8 11V8a4 4 0 0 1 8 0v3'/></svg>",
+      // Key (access)
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='7' cy='12' r='3'/><path d='M10 12h11'/><path d='M18 10v4'/></svg>",
+      // Certificate
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 3h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z'/><path d='M8 7h8M8 11h6'/><path d='M12 16l2 5-2-1-2 1 2-5z'/></svg>",
+      // Queue / stream
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='4' y='5' width='6' height='14' rx='1'/><rect x='10' y='8' width='6' height='11' rx='1'/><path d='M20 12v6'/></svg>",
+      // Message bus
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='6' cy='12' r='2'/><circle cx='18' cy='8' r='2'/><circle cx='18' cy='16' r='2'/><path d='M8 12h8M8 12 16 8M8 12l8 4'/></svg>",
+      // Disk
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='4' y='4' width='16' height='16' rx='2'/><path d='M8 4v8h8V4'/></svg>",
+      // Backup (clockwise)
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 6a6 6 0 1 1-6 6'/><path d='M6 6v4h4'/></svg>",
+      // Autoscale arrows
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 5V3m0 18v-2M5 12H3m18 0h-2'/><path d='M8 16l4-4 4 4'/><path d='M16 8l-4 4-4-4'/></svg>",
+      // Router/switch
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='4' y='10' width='16' height='6' rx='2'/><path d='M6 10V8m12 2V8'/><path d='M8 16v2m8-2v2'/></svg>",
+      // Region pin
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 21s-6-4.5-6-9a6 6 0 1 1 12 0c0 4.5-6 9-6 9z'/><circle cx='12' cy='12' r='2'/></svg>",
+      // Vault (secure storage)
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='4' y='4' width='16' height='16' rx='2'/><circle cx='12' cy='12' r='3'/><path d='M12 9v6M9 12h6'/></svg>",
+      // Cog (control plane)
+      "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z'/><path d='M3 12h2M19 12h2M12 3v2M12 19v2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4'/></svg>"
+    ];
+
+  const rng = (a, b) => Math.random() * (b - a) + a;
+  // More items overall
+  const count = Math.floor(rng(24, 36));
+
+  const items = [];
+    function resize() {
+      const r = hero.getBoundingClientRect();
+      return { w: r.width, h: r.height };
+    }
+    let { w: W, h: H } = resize();
+    window.addEventListener('resize', () => { const r = resize(); W = r.w; H = r.h; });
+
+    for (let i = 0; i < count; i++) {
+  const el = document.createElement('div');
+      el.className = 'cc-icon';
+      el.innerHTML = ICONS[Math.floor(Math.random() * ICONS.length)];
+  // Bigger icons for stronger presence
+  const size = rng(52, 96);
+      el.querySelector('svg').style.width = `${size}px`;
+      el.querySelector('svg').style.height = `${size}px`;
+      el.style.color = accent.trim() || '#60a5fa';
+      layer.appendChild(el);
+
+      const x = rng(0, Math.max(0, W - size));
+      const y = rng(H * 0.05, Math.max(H * 0.7, size));
+  // Slower initial velocities
+  const vx = rng(-0.035, 0.035);
+  const vy = rng(-0.035, 0.035);
+      const rot = rng(0, Math.PI * 2);
+  const vrot = rng(-0.0012, 0.0012);
+      items.push({ el, x, y, vx, vy, size, rot, vrot });
+      // Set initial position immediately
+      el.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rot}rad)`;
+    }
+
+    // Motion multiplier: keep gentle motion even if reduced
+  // Slow overall motion
+  const motionMul = prefersReduced ? 0.35 : 0.7;
+    let last = performance.now();
+  let chaos = prefersReduced ? 0.1 : 0.2; // grows over time slowly
+
+    // Subtle mouse parallax
+    let mx = 0.5, my = 0.5;
+    window.addEventListener('mousemove', (e) => {
+      mx = e.clientX / window.innerWidth; my = e.clientY / window.innerHeight;
+    }, { passive: true });
+    function loop(t) {
+      const dt = Math.min(50, t - last);
+      last = t;
+  // Slower growth of randomness over time
+  chaos = Math.min(1.4, chaos + dt * 0.00006 * motionMul);
+
+      for (const it of items) {
+        // random jitter increasing with chaos
+  it.vx += (Math.random() - 0.5) * 0.0012 * chaos * motionMul;
+  it.vy += (Math.random() - 0.5) * 0.0012 * chaos * motionMul;
+  it.vrot += (Math.random() - 0.5) * 0.00004 * chaos * motionMul;
+
+        // speed clamp
+  const maxV = (0.12 * chaos + 0.04) * motionMul;
+        it.vx = Math.max(-maxV, Math.min(maxV, it.vx));
+        it.vy = Math.max(-maxV, Math.min(maxV, it.vy));
+
+        // move
+        // add parallax drift towards cursor
+  const px = (mx - 0.5) * 0.006 * it.size; // gentler parallax
+  const py = (my - 0.5) * 0.006 * it.size;
+        it.x += (it.vx * dt + px) * motionMul;
+        it.y += (it.vy * dt + py) * motionMul;
+        it.rot += it.vrot * dt;
+
+        // soft bounds with bounce
+        const pad = 12;
+        const maxX = Math.max(pad, W - it.size - pad);
+        const maxY = Math.max(pad, H - it.size - pad);
+        if (it.x < pad || it.x > maxX) it.vx *= -1, it.x = Math.max(pad, Math.min(maxX, it.x));
+        if (it.y < pad || it.y > maxY) it.vy *= -1, it.y = Math.max(pad, Math.min(maxY, it.y));
+
+        it.el.style.transform = `translate3d(${it.x}px, ${it.y}px, 0) rotate(${it.rot}rad)`;
+      }
+
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  });
+</script>

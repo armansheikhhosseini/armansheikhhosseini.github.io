@@ -9,6 +9,8 @@ import Certifications from "../components/Certifications.astro";
 import Footer from "../components/Footer.astro";
 import { siteConfig } from "../config";
 import "../styles/global.css";
+import CloudPlayground from "../components/CloudPlayground.astro";
+import DynamicCloudBackground from "../components/DynamicCloudBackground.astro";
 ---
 
 <html lang="en">
@@ -27,9 +29,11 @@ import "../styles/global.css";
     <title>{siteConfig.name} - {siteConfig.title}</title>
   </head>
   <body>
+  <DynamicCloudBackground />
     <Header />
     <section>
       <Hero />
+  <CloudPlayground />
       <About />
       <Projects />
       <Experience />
@@ -42,7 +46,7 @@ import "../styles/global.css";
     <div class="fixed bottom-8 right-8 z-40">
       <button
         id="scroll-to-top"
-        class="group w-14 h-14 bg-gradient-to-br from-blue-600 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-white/20 opacity-0 translate-y-4"
+        class="group w-14 h-14 bg-gradient-to-br from-blue-600 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border border-white/20 opacity-0 translate-y-4"
         aria-label="Scroll to top"
       >
         <svg class="w-6 h-6 mx-auto transition-transform group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
