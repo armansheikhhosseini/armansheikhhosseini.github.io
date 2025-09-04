@@ -32,11 +32,14 @@
   window.addEventListener('resize', resize);
 
   // Node/edge graph representing microservices
+  const styles = getComputedStyle(document.documentElement);
+  const ACCENT = (styles.getPropertyValue('--accent-color') || '#60a5fa').trim();
+  const ACCENT2 = (styles.getPropertyValue('--accent-secondary') || '#a78bfa').trim();
   const TYPES = [
-    { key: 'compute', color: '#60a5fa' },
+    { key: 'compute', color: ACCENT },
     { key: 'db', color: '#34d399' },
     { key: 'storage', color: '#f59e0b' },
-    { key: 'gateway', color: '#a78bfa' },
+    { key: 'gateway', color: ACCENT2 },
   ];
 
   const rand = (min, max) => Math.random() * (max - min) + min;
@@ -121,7 +124,7 @@
   const iconItems = [];
   const rng = (a,b) => Math.random() * (b - a) + a;
   const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
-  const COLOR_POOL = ['#60a5fa','#34d399','#f59e0b','#a78bfa','#f472b6','#22d3ee'];
+  const COLOR_POOL = [ACCENT,'#34d399','#f59e0b',ACCENT2,'#f472b6','#22d3ee'];
 
   // Generic and AWS-like glyphs (currentColor-stroked, brand-neutral)
   const ICONS_AWSY = [

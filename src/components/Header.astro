@@ -12,13 +12,13 @@ const hasCertifications = siteConfig.certifications && siteConfig.certifications
   class="fixed top-0 left-0 right-0 z-50 hidden md:block transition-all duration-300 bg-gray-900/80"
 >
   <!-- Scroll Progress Bar -->
-  <div class="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300" id="scroll-progress"></div>
+    <div class="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[var(--accent-color)] to-[var(--accent-secondary, #a78bfa)] transition-all duration-300" id="scroll-progress"></div>
   
   <nav class="max-w-7xl mx-auto px-8 py-4">
     <ul class="flex items-center gap-8 justify-center">
       <li>
         <a
-          href="#cloud"
+            href="#home"
           class="nav-link text-gray-300 hover:text-white transition-all duration-300 font-medium relative"
         >
           Cloud
@@ -136,16 +136,18 @@ const hasCertifications = siteConfig.certifications && siteConfig.certifications
     left: 50%;
     width: 0;
     height: 2px;
-    background: #3b82f6;
+    background: var(--accent-color);
     transition: all 0.3s ease;
     transform: translateX(-50%);
   }
 
-  .nav-link:hover::before {
-    width: 100%;
-  }
+  .nav-link:hover::before { width: 100%; }
 
   .nav-link:hover {
     transform: translateY(-2px);
+  }
+
+  :root {
+    --accent-secondary: #a78bfa;
   }
 </style>

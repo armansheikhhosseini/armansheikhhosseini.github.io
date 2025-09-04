@@ -40,7 +40,7 @@ import { siteConfig } from "../config";
         <h2
           class="text-pretty text-xl sm:text-2xl md:text-5xl font-semibold tracking-wide text-gray-300 animate-fade-in leading-tight"
         >
-          Hello! 👋
+          <span id="greet-text" class="greet cool" dir="auto">Hello!</span> <span class="wave-hand" role="img" aria-label="waving hand">👋</span>
         </h2>
         <h1
           class="mt-8 sm:mt-10 md:mt-12 text-pretty text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight text-white animate-fade-in animation-delay-200 leading-none"
@@ -249,6 +249,102 @@ import { siteConfig } from "../config";
       opacity: 0.8;
       transform: scale(1.02);
     }
+  }
+
+  /* Waving hand */
+  .wave-hand {
+    display: inline-block;
+    transform-origin: 70% 70%;
+    animation: hand-wave 1.9s ease-in-out infinite;
+    will-change: transform;
+  }
+  @keyframes hand-wave {
+    0%, 100% { transform: rotate(0deg); }
+    10% { transform: rotate(14deg); }
+    20% { transform: rotate(-8deg); }
+    30% { transform: rotate(12deg); }
+    40% { transform: rotate(-6deg); }
+    50% { transform: rotate(8deg); }
+    60% { transform: rotate(-4deg); }
+    70% { transform: rotate(4deg); }
+    80% { transform: rotate(-2deg); }
+    90% { transform: rotate(2deg); }
+  }
+
+  @keyframes hand-wave-soft {
+    0%, 100% { transform: rotate(0deg); }
+    20% { transform: rotate(6deg); }
+    40% { transform: rotate(-4deg); }
+    60% { transform: rotate(5deg); }
+    80% { transform: rotate(-3deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wave-hand { animation: hand-wave-soft 2.6s ease-in-out infinite; }
+  }
+
+  /* Greeting swap animation */
+  .greet { display: inline-block; will-change: transform, opacity, filter; }
+  .greet.cool {
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary, #a78bfa));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 18px rgba(99,102,241,0.25);
+    background-size: 200% 100%;
+    animation: greet-sheen 7.5s linear infinite;
+    position: relative; /* for sparkle sweep */
+  }
+  .greet.swap { 
+    animation: greet-swap 520ms cubic-bezier(.2,.7,.2,1) forwards, 
+               greet-chroma 520ms ease-out forwards; 
+  }
+  /* Sparkle sweep on each swap */
+  .greet.cool::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    bottom: -20%;
+    left: 0;
+    width: 26%;
+    transform: translateX(-140%) rotate(18deg);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+    filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+  .greet.cool.swap::after { animation: greet-spark 650ms ease-out 1 forwards; }
+  @keyframes greet-swap {
+    0% { opacity: 0; transform: translateY(8px) scale(0.98); filter: blur(2px); }
+    60% { opacity: 1; transform: translateY(0) scale(1.02); filter: blur(0.5px); }
+    100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  }
+
+  @keyframes greet-sheen {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+
+  @keyframes greet-spark {
+    0% { transform: translateX(-140%) rotate(18deg); opacity: 0; }
+    25% { opacity: 0.85; }
+    100% { transform: translateX(160%) rotate(18deg); opacity: 0; }
+  }
+
+  @keyframes greet-chroma {
+    0% { text-shadow: 0 0 18px rgba(99,102,241,0.25), 1px 0 0 rgba(99,102,241,0.35), -1px 0 0 rgba(16,185,129,0.25); }
+    100% { text-shadow: 0 0 18px rgba(99,102,241,0.25), 0 0 0 rgba(99,102,241,0), 0 0 0 rgba(16,185,129,0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+  .greet.cool { animation: none; }
+  .greet.cool::after { display: none; }
+  .greet.swap { animation: greet-swap-soft 360ms ease-out forwards; }
+  }
+  @keyframes greet-swap-soft {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   @keyframes float {
@@ -477,7 +573,8 @@ import { siteConfig } from "../config";
     const hero = document.getElementById('hero');
     if (!layer || !hero) return;
 
-    const accent = getComputedStyle(hero).getPropertyValue('--accent-color') || '#60a5fa';
+  const accent = getComputedStyle(hero).getPropertyValue('--accent-color') || '#60a5fa';
+  const accent2 = getComputedStyle(hero).getPropertyValue('--accent-secondary') || '#a78bfa';
 
     // Generic cloud-computing glyphs (currentColor-stroked)
     const ICONS = [
@@ -559,7 +656,7 @@ import { siteConfig } from "../config";
   const size = rng(52, 96);
       el.querySelector('svg').style.width = `${size}px`;
       el.querySelector('svg').style.height = `${size}px`;
-      el.style.color = accent.trim() || '#60a5fa';
+  el.style.color = accent.trim() || '#60a5fa';
       layer.appendChild(el);
 
       const x = rng(0, Math.max(0, W - size));
@@ -623,5 +720,29 @@ import { siteConfig } from "../config";
       requestAnimationFrame(loop);
     }
     requestAnimationFrame(loop);
+  });
+</script>
+
+<script>
+  // Rotate greeting across common languages
+  document.addEventListener('DOMContentLoaded', () => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const greetEl = document.getElementById('greet-text');
+    if (!greetEl) return;
+  // Requested languages and order: English, French, Spanish, Italian, Persian, Chinese
+  const greetings = ['Hello!', 'Bonjour!', 'Hola!', 'Ciao!', 'سلام!', '你好！'];
+    let i = 0;
+    const swap = () => {
+      i = (i + 1) % greetings.length;
+      greetEl.classList.remove('swap');
+      void greetEl.offsetWidth;
+      greetEl.textContent = greetings[i];
+      greetEl.setAttribute('dir', 'auto');
+      greetEl.classList.add('swap');
+    };
+    greetEl.classList.add('swap');
+    const ms = prefersReduced ? 3600 : 2400;
+    const timer = setInterval(swap, ms);
+    window.addEventListener('beforeunload', () => clearInterval(timer));
   });
 </script>

@@ -28,25 +28,42 @@ import DynamicCloudBackground from "../components/DynamicCloudBackground.astro";
     />
     <title>{siteConfig.name} - {siteConfig.title}</title>
   </head>
-  <body>
+  <body style={`--accent-color: ${siteConfig.accentColor}; --accent-secondary: #a78bfa`}>
   <DynamicCloudBackground />
-    <Header />
-    <section>
-      <Hero />
-  <CloudPlayground />
-      <About />
-      <Projects />
-      <Experience />
-      <Education />
-      <Certifications />
-    </section>
+  <Header />
+
+  <!-- Spotlight overlay to focus current section -->
+  <div id="spotlight" aria-hidden="true" class="pointer-events-none fixed inset-0 z-30 opacity-80"></div>
+
+    <!-- Section change indicator -->
+    <div id="section-indicator" class="fixed top-6 right-6 z-40 pointer-events-none opacity-0 translate-y-1 transition-all duration-300">
+      <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/50 backdrop-blur-md px-4 py-2 text-sm text-white shadow-xl">
+        <span class="inline-block h-2 w-2 rounded-full bg-[var(--accent-color)] shadow-[0_0_12px_var(--accent-color)]"></span>
+        <span id="section-indicator-text">Home</span>
+      </div>
+    </div>
+
+    <!-- Paged sections -->
+    <section id="home" class="section-block" data-label="Home"><Hero /></section>
+    <div class="section-sep" aria-hidden="true"></div>
+    <section id="live" class="section-block" data-label="Live"><CloudPlayground /></section>
+    <div class="section-sep" aria-hidden="true"></div>
+    <section id="about" class="section-block" data-label="About"><About /></section>
+    <div class="section-sep" aria-hidden="true"></div>
+    <section id="projects" class="section-block" data-label="Projects"><Projects /></section>
+    <div class="section-sep" aria-hidden="true"></div>
+    <section id="experience" class="section-block" data-label="Experience"><Experience /></section>
+    <div class="section-sep" aria-hidden="true"></div>
+    <section id="education" class="section-block" data-label="Education"><Education /></section>
+    <div class="section-sep" aria-hidden="true"></div>
+    <section id="certifications" class="section-block" data-label="Certifications"><Certifications /></section>
     <Footer />
     
     <!-- Floating Action Button -->
     <div class="fixed bottom-8 right-8 z-40">
       <button
         id="scroll-to-top"
-        class="group w-14 h-14 bg-gradient-to-br from-blue-600 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border border-white/20 opacity-0 translate-y-4"
+        class="group w-14 h-14 bg-gradient-to-br from-[var(--accent-color)] to-[var(--accent-secondary,#a78bfa)] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 border border-white/20 opacity-0 translate-y-4"
         aria-label="Scroll to top"
       >
         <svg class="w-6 h-6 mx-auto transition-transform group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -55,11 +72,110 @@ import DynamicCloudBackground from "../components/DynamicCloudBackground.astro";
       </button>
     </div>
 
+    <style>
+      /* Section reveal and separators */
+      .section-block { opacity: 0; transform: translateY(32px) scale(0.995); transition: opacity .6s ease, transform .6s ease, filter .6s ease; transform-origin: center; }
+      /* After revealed, idle sections are strongly dimmed */
+      .section-block.in { opacity: .25; transform: translateY(0) scale(0.995); }
+      /* The currently active (dominant) section pops slightly */
+      .section-block.active { opacity: 1; transform: translateY(0) scale(1.015); filter: drop-shadow(0 10px 30px rgba(99,102,241,0.25)); }
+      .section-sep { height: 56px; display: block; }
+      .section-sep::before {
+        content: '';
+        display: block;
+        height: 1px;
+        margin: 0 auto;
+        width: min(72ch, 92%);
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,.45), transparent);
+        filter: blur(.4px);
+        opacity: .8;
+      }
+      /* Spotlight overlay styles */
+      #spotlight { 
+        background: radial-gradient(circle at var(--sx, 50%) var(--sy, 40%), rgba(0,0,0,0) 35%, rgba(0,0,0,0.38) 60%, rgba(0,0,0,0.62) 100%);
+        transition: background-position .28s ease, opacity .28s ease;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .section-block { transition: opacity .3s ease; transform: none; }
+        #spotlight { transition: none; }
+      }
+    </style>
+
     <script>
       // Scroll to top functionality
       document.addEventListener('DOMContentLoaded', () => {
         const scrollToTopBtn = document.getElementById('scroll-to-top');
+  const sections = Array.from(document.querySelectorAll('.section-block'));
+        const indicator = document.getElementById('section-indicator');
+        const indicatorText = document.getElementById('section-indicator-text');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const spot = document.getElementById('spotlight');
+        let lastLabel = 'Home';
+        let hideTimer;
         
+        // Reveal on enter
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const target = entry.target;
+            if (entry.isIntersecting) {
+              target.classList.add('in');
+            }
+          });
+        }, { root: null, threshold: prefersReduced ? 0.2 : 0.12 });
+
+        sections.forEach((sec) => io.observe(sec));
+
+        // Determine the active section based on proximity to viewport center
+        let ticking = false;
+        function updateActive() {
+          ticking = false;
+          const vpH = window.innerHeight || document.documentElement.clientHeight;
+          const vpCenter = vpH / 2;
+          let best = null;
+          let bestDist = Infinity;
+          for (const sec of sections) {
+            const r = sec.getBoundingClientRect();
+            const mid = r.top + r.height / 2;
+            const dist = Math.abs(mid - vpCenter);
+            // Require at least small overlap with viewport to qualify
+            const intersects = r.bottom > 0 && r.top < vpH;
+            if (intersects && dist < bestDist) { best = sec; bestDist = dist; }
+          }
+          if (!best) return;
+          sections.forEach((s) => s.classList.toggle('active', s === best));
+          const label = best.getAttribute('data-label') || '';
+          // Move the spotlight to the active section's center
+          if (spot) {
+            const r = best.getBoundingClientRect();
+            const cx = Math.round(r.left + r.width / 2);
+            const cy = Math.round(r.top + r.height / 2);
+            spot.style.setProperty('--sx', `${cx}px`);
+            spot.style.setProperty('--sy', `${cy}px`);
+          }
+          if (label && label !== lastLabel) {
+            lastLabel = label;
+            indicatorText.textContent = label;
+            indicator.classList.remove('opacity-0', 'translate-y-1');
+            indicator.classList.add('opacity-100', 'translate-y-0');
+            clearTimeout(hideTimer);
+            hideTimer = setTimeout(() => {
+              indicator.classList.add('opacity-0', 'translate-y-1');
+              indicator.classList.remove('opacity-100', 'translate-y-0');
+            }, 2000);
+          }
+        }
+
+        function onScrollOrResize() {
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(updateActive);
+          }
+        }
+
+        window.addEventListener('scroll', onScrollOrResize, { passive: true });
+        window.addEventListener('resize', onScrollOrResize);
+        updateActive();
+
         window.addEventListener('scroll', () => {
           if (window.scrollY > 500) {
             scrollToTopBtn.classList.remove('opacity-0', 'translate-y-4');
