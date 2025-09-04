@@ -1,0 +1,64 @@
+---
+import { siteConfig } from "../config";
+---
+
+<section id="certifications" class="relative p-8 sm:p-12 md:p-16 lg:p-24 bg-gray-900 overflow-hidden">
+  <!-- Gradient Background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800"></div>
+  <div class="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-blue-900/20 to-transparent"></div>
+  <div class="absolute bottom-0 right-0 w-1/3 h-1/3 bg-gradient-to-tl from-purple-900/20 to-transparent"></div>
+  
+  <div class="relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div class="lg:col-span-5">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-white leading-tight tracking-tight">
+          Certifications
+        </h2>
+        <div
+          class="w-[75px] h-[5px] mt-4 rounded-full"
+          style={`background-color: ${siteConfig.accentColor}`}
+        />
+        <p class="text-gray-300 mt-6 text-lg leading-relaxed mb-8 lg:mb-0">
+          Professional certifications demonstrating expertise in cloud computing, cybersecurity, and infrastructure management.
+        </p>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">>
+          {siteConfig.certifications.map((cert, index) => (
+            <div 
+              class="group bg-gray-800 rounded-xl p-6 border border-gray-700 transition-all duration-300 hover:border-blue-500 hover:bg-gray-750 hover:-translate-y-1 hover:shadow-lg cert-card"
+              style={`animation-delay: ${index * 0.1}s`}
+            >
+              <div class="space-y-4">
+                <!-- Category Badge and Icon row -->
+                <div class="flex items-center justify-between">
+                  <span class="inline-block px-3 py-1 bg-blue-600 text-white rounded-full text-xs font-medium">
+                    {cert.category}
+                  </span>
+                  <div class="w-8 h-8 bg-blue-600/20 rounded-lg flex items-center justify-center">
+                    <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Certificate Name -->
+                <h3 class="text-base font-bold text-white leading-tight">
+                  {cert.name}
+                </h3>
+
+                <!-- Issuer -->
+                <p class="text-gray-400 text-sm">
+                  {cert.issuer}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

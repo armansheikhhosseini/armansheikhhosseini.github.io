@@ -1,0 +1,98 @@
+ARMAN SHEIKH HOSSEINI
+
+DevOps Engineer
+
+Contact
+
+Email:
+arman.sheikhhosseini@gmail.com
+
+Phone:
++39-379-268-2755
+
+Address:
+Turin, Piedmont
+
+LinkedIn:
+https://www.linkedin.com/in/thearmansh/
+
+Website:
+https://armansheikhhosseini.github.io/
+
+Professional Summary
+
+DevOps Engineer with five years of experience finding solutions and determining customer satisfaction. Adept in developing products for web design, user experience, and best practices and speed.
+
+Experience
+
+DevOps Engineer
+TorobNov 2022 - Present
+
+Provisioned and deployed highly available AWS infrastructure (EC2, VPC, IAM, Redshift, EBS, RDS, Route 53) using Terraform, enhancing scalability and reliability while reducing provisioning time by 60%.
+Implemented automated backup and recovery processes utilizing AWS Backup and Amazon S3 versioning, ensuring data integrity and availability in compliance with industry best practices.
+Deployed and automated configuration management using Ansible, streamlining setup across environments and eliminating repetitive manual tasks.
+Optimized system monitoring and alerting with Prometheus and Grafana dashboards, achieving a 25% reduction in mean time to resolution (MTTR) and enabling proactive incident handling.
+Automated daily infrastructure tasks using Rundeck, encompassing AWS service management and backups, thereby improving operational efficiency and consistency.
+Containerized services with Docker, accelerating deployment cycles and simplifying environment management.
+Developed scripts in Bash and Python for system automation, reducing manual errors and saving developer hours (e.g., scripting data backups and routine checks).
+Administered Jenkins CI/CD pipelines, performing routine maintenance, updates, configuration, and cloud configuration tasks to ensure seamless and reliable builds.
+
+Network Operations Center Engineer
+ShatelJul 2020 - Sep 2022
+
+Utilized PRTG and Zabbix to monitor network performance, achieving a 95% proactive issue resolution rate before end-user impact.
+Configured and optimized routers to ensure 99.9% network uptime, enhancing overall service reliability.
+Employed SolarWinds for in-depth network traffic analysis, identifying and mitigating bottlenecks, leading to a 30% reduction in downtime.
+Coordinated with cross-functional teams to resolve network incidents promptly, minimizing service disruptions and maintaining customer satisfaction.
+Maintained comprehensive network documentation and incident reports, ensuring compliance with internal standards and facilitating continuous improvement.
+
+Technical Support Specialist
+ShatelJun 2018 - Jul 2020
+
+Resolved an average of 50+ technical support tickets per week, maintaining a 95% customer satisfaction rating.
+Conducted regular system and software updates, preventing potential downtimes and enhancing system performance by 20%.
+Collaborated with cross-functional teams to identify and resolve recurring technical issues, leading to a 30% reduction in repeat tickets.
+Maintained comprehensive documentation of technical issues and resolutions, streamlining knowledge sharing and reducing resolution time by 15%.
+Utilized remote support tools like Zendesk and TeamViewer to troubleshoot and resolve customer issues efficiently.
+
+Education
+
+POLITECNICO DI TORINO
+
+Expected graduation Jan 2026
+
+Master Cybersecurity Candidate
+
+AZAD UNIVERSITY
+
+Jan 2018
+
+Bachelor
+Computer Software Engineering
+
+Skills
+
+Cloud computing expertise
+Web server management (Apache, Nginx)
+CI/CD practices (GitLab, Jenkins)
+Container orchestration (Docker, Kubernetes)
+Infrastructure as code (Terraform, Ansible)
+Scripting languages (Python, Bash)
+Monitoring solutions (CloudWatch, Prometheus, Grafana)
+AWS services (EC2, VPC, S3, RDS, Lambda)
+Unix/Linux administration
+
+Certifications
+
+Cisco Certified Network Associate Security (CCNA)
+Linux Professional Institute LPIC-1
+Linux Professional Institute LPIC-2
+Microsoft Certified Systems Administrator (MCSA)
+CompTIA Security+
+Certified Kubernetes Administrator (CKA)
+AWS Certified DevOps Engineer
+
+Languages
+
+English, Fluent 
+Italian, Intermediate 
