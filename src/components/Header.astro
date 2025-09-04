@@ -9,19 +9,20 @@ const hasCertifications = siteConfig.certifications && siteConfig.certifications
 
 <header
   id="header"
-  class="fixed top-0 left-0 right-0 z-50 hidden md:block transition-all duration-300 bg-gray-900/80"
+  class="fixed top-0 left-0 right-0 z-40 hidden md:block transition-all duration-300 bg-gray-900/80"
+  style="padding-top: env(safe-area-inset-top);"
 >
   <!-- Scroll Progress Bar -->
     <div class="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[var(--accent-color)] to-[var(--accent-secondary, #a78bfa)] transition-all duration-300" id="scroll-progress"></div>
   
-  <nav class="max-w-7xl mx-auto px-8 py-4">
+  <nav class="max-w-7xl mx-auto px-8 py-4 relative">
     <ul class="flex items-center gap-8 justify-center">
       <li>
         <a
             href="#home"
           class="nav-link text-gray-300 hover:text-white transition-all duration-300 font-medium relative"
         >
-          Cloud
+          Home
         </a>
       </li>
       <li>
@@ -80,7 +81,7 @@ const hasCertifications = siteConfig.certifications && siteConfig.certifications
           </li>
         )
       }
-    </ul>
+  </ul>
   </nav>
 </header>
 
@@ -120,6 +121,9 @@ const hasCertifications = siteConfig.certifications && siteConfig.certifications
         }
       });
     });
+
+  // header CTA removed
+
   });
 </script>
 
@@ -147,7 +151,18 @@ const hasCertifications = siteConfig.certifications && siteConfig.certifications
     transform: translateY(-2px);
   }
 
+  /* Remove default blue focus ring on click; keep an accessible focus style for keyboard users */
+  .nav-link:focus { outline: none; }
+  .nav-link:focus-visible {
+    outline: none;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .nav-link:focus-visible::before { width: 100%; }
+
   :root {
     --accent-secondary: #a78bfa;
   }
+
+  /* header CTA removed */
 </style>

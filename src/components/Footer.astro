@@ -230,4 +230,12 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
 
   .nav-link:hover::before { width: 100%; }
   .nav-link:hover { transform: translateY(-2px); }
+
+  .nav-link:focus { outline: none; }
+  .nav-link:focus-visible {
+    outline: none;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .nav-link:focus-visible::before { width: 100%; }
 </style>

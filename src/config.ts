@@ -3,6 +3,8 @@ export const siteConfig = {
   title: "DevOps Engineer",
   description: "DevOps Engineer with five years of experience finding solutions and determining customer satisfaction. Adept in developing products for web design, user experience, and best practices and speed.",
   accentColor: "#1d4ed8",
+  // Public path to your PDF CV (place the file in the `public/` folder)
+  cvUrl: "/ARMAN_SHEIKHHOSSEINI_CV.pdf",
   social: {
     email: "arman.sheikhhosseini@gmail.com",
     location: "Turin, Piedmont",
