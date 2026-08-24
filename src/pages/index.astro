@@ -9,8 +9,6 @@ import Certifications from "../components/Certifications.astro";
 import Footer from "../components/Footer.astro";
 import { siteConfig } from "../config";
 import "../styles/global.css";
-import CloudPlayground from "../components/CloudPlayground.astro";
-import DynamicCloudBackground from "../components/DynamicCloudBackground.astro";
 ---
 
 <html lang="en">
@@ -29,7 +27,6 @@ import DynamicCloudBackground from "../components/DynamicCloudBackground.astro";
     <title>{siteConfig.name} - {siteConfig.title}</title>
   </head>
   <body style={`--accent-color: ${siteConfig.accentColor}; --accent-secondary: #a78bfa`}>
-  <DynamicCloudBackground />
   <Header />
 
   <!-- Spotlight overlay to focus current section -->
@@ -45,8 +42,6 @@ import DynamicCloudBackground from "../components/DynamicCloudBackground.astro";
 
     <!-- Paged sections -->
     <section id="home" class="section-block" data-label="Home"><Hero /></section>
-    <div class="section-sep" aria-hidden="true"></div>
-    <section id="live" class="section-block" data-label="Live"><CloudPlayground /></section>
     <div class="section-sep" aria-hidden="true"></div>
     <section id="about" class="section-block" data-label="About"><About /></section>
     <div class="section-sep" aria-hidden="true"></div>
