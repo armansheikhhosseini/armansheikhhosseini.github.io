@@ -1,638 +1,173 @@
 ---
 import { siteConfig } from "../config";
+
+const keyTech = ["AWS", "Kubernetes", "Terraform", "Argo CD", "Python"];
 ---
 
-<div
-  id="hero"
-  class="relative isolate overflow-hidden bg-transparent py-24 md:h-screen"
-  style={`--accent-color: ${siteConfig.accentColor}`}
->
-  
-  <!-- Animated Background Elements -->
-  <div class="absolute inset-0 -z-10 overflow-hidden">
-    <!-- Floating Particles -->
-    <div class="floating-particle particle-1"></div>
-    <div class="floating-particle particle-2"></div>
-    <div class="floating-particle particle-3"></div>
-    <div class="floating-particle particle-4"></div>
-    <div class="floating-particle particle-5"></div>
-  </div>
-  <div class="h-full mx-auto p-8 sm:p-12 md:p-16 lg:p-24 flex items-center">
-    <div class="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
-      <!-- Profile Photo -->
-      <div class="flex-shrink-0">
-        <div class="relative group">
-          <img 
-            src="/profile-photo.jpg" 
-            alt="Arman Sheikhhosseini" 
-            class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full object-cover shadow-2xl border-4 border-white transition-all duration-300 hover:scale-105 hover:shadow-blue-500/30 hover:shadow-2xl animate-fade-in"
-          />
-          <!-- Glowing ring effect -->
-          <div class="absolute inset-0 rounded-full border-2 border-blue-400/50 glow-pulse pointer-events-none"></div>
-        </div>
-      </div>
-      
-      <!-- Text Content -->
-      <div class="text-center md:text-left">
-        <h2
-          class="text-pretty text-xl sm:text-2xl md:text-5xl font-semibold tracking-wide text-gray-300 animate-fade-in leading-tight"
-        >
-          <span id="greet-text" class="greet cool" dir="auto">Hello!</span> <span class="wave-hand" role="img" aria-label="waving hand">👋</span>
-        </h2>
-        <h1
-          class="mt-8 sm:mt-10 md:mt-12 text-pretty text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight text-white animate-fade-in animation-delay-200 leading-none"
-        >
-          I'm <span style={{ color: siteConfig.accentColor }}
-            >{siteConfig.name}</span
-          >
-        </h1>
-        <p
-          class="mt-6 sm:mt-8 md:mt-10 text-pretty text-lg sm:text-xl md:text-2xl font-normal text-gray-300 animate-fade-in animation-delay-400 leading-relaxed tracking-wide max-w-2xl"
-        >
-          {siteConfig.title}
-        </p>
-        
-        
+<section id="top" class="wrap pt-32 md:pt-44 pb-[clamp(3rem,2rem+5vw,6rem)]">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-end">
+    <div class="lg:col-span-7 reveal">
+      <p class="eyebrow flex items-center gap-2.5">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        {siteConfig.title} — {siteConfig.social.location}
+      </p>
+
+      <h1 class="display mt-6">{siteConfig.name}</h1>
+
+      <p class="lede mt-7">{siteConfig.tagline}</p>
+
+      <ul class="flex flex-wrap gap-2 mt-8" aria-label="Core technologies">
+        {keyTech.map((tech) => <li class="tag">{tech}</li>)}
+      </ul>
+
+      <div class="flex flex-wrap items-center gap-3 mt-9 no-print">
+        <a href={siteConfig.cvUrl} download class="btn btn-primary">
+          Download CV
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v13M6 12l6 6 6-6M4 21h16" />
+          </svg>
+        </a>
+        <a href={`mailto:${siteConfig.social.email}`} class="btn">
+          Get in touch
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17L17 7M9 7h8v8" />
+          </svg>
+        </a>
       </div>
     </div>
+
+    <figure class="lg:col-span-5 reveal m-0">
+      <div class="portrait">
+        <img
+          src="/profile-photo.jpg"
+          alt={siteConfig.name}
+          width="800"
+          height="800"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+      <figcaption class="meta mt-3 flex items-center justify-between">
+        <span>{siteConfig.social.location}</span>
+        <span>{siteConfig.yearsExperience} years in production</span>
+      </figcaption>
+    </figure>
   </div>
-  <div
-    class="absolute bottom-0 left-0 right-0 p-8 sm:p-12 md:p-16 lg:p-24 flex gap-x-4 sm:gap-x-6 md:gap-x-8 text-gray-300 animate-fade-in animation-delay-600"
-  >
-    {
-      siteConfig.social?.email && (
-        <a
-          href={`mailto:${siteConfig.social.email}`}
-          aria-label="Email"
-          class="social-icon transition-all duration-300 hover:text-[var(--accent-color)] transform hover:scale-110 hover:-translate-y-1"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
-            <path d="M3 7l9 6l9 -6" />
-          </svg>
-        </a>
-      )
-    }
-    {
-      siteConfig.social?.linkedin && (
-        <a
-          href={siteConfig.social.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn"
-          class="social-icon transition-all duration-300 hover:text-[var(--accent-color)] transform hover:scale-110 hover:-translate-y-1"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
-          >
-            <>
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M8 11v5" />
-              <path d="M8 8v.01" />
-              <path d="M12 16v-5" />
-              <path d="M16 16v-3a2 2 0 1 0 -4 0" />
-              <path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z" />
-            </>
-          </svg>
-        </a>
-      )
-    }
-    {
-      siteConfig.social?.twitter && (
-        <a
-          href={siteConfig.social.twitter}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Twitter"
-          class="social-icon transition-all duration-300 hover:text-[var(--accent-color)] transform hover:scale-110 hover:-translate-y-1"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
-          >
-            <>
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-              <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-            </>
-          </svg>
-        </a>
-      )
-    }
-    {
-      siteConfig.social?.telegram && (
-        <a
-          href={siteConfig.social.telegram}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Telegram"
-          class="social-icon transition-all duration-300 hover:text-[var(--accent-color)] transform hover:scale-110 hover:-translate-y-1"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
-          >
-            <>
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" />
-            </>
-          </svg>
-        </a>
-      )
-    }
-    {
-      siteConfig.social?.github && (
-        <a
-          href={siteConfig.social.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub"
-          class="social-icon transition-all duration-300 hover:text-[var(--accent-color)] transform hover:scale-110 hover:-translate-y-1"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
-          >
-            <>
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
-            </>
-          </svg>
-        </a>
-      )
-    }
-    <!-- Download CV action -->
-    <a
-      href={siteConfig.cvUrl || "/ARMAN_SHEIKHHOSSEINI_CV.pdf"}
-      download
-      aria-label="Download my CV as PDF"
-      class="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm sm:text-base font-medium text-white btn-cv btn-ripple"
-      style="background: var(--accent-color)"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-90">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-        <path d="M7 10l5 5 5-5"/>
-        <path d="M12 15V3"/>
-      </svg>
-      <span>Download CV</span>
-    </a>
-  </div>
-  
-  
-</div>
+
+  <dl class="stats mt-[clamp(3.5rem,2rem+6vw,6rem)] reveal">
+    {siteConfig.highlights.map((item) => (
+      <div class="stat">
+        <dt class="stat-value">{item.value}</dt>
+        <dd class="stat-label">{item.label}</dd>
+      </div>
+    ))}
+  </dl>
+</section>
 
 <style>
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 99px;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 60%, transparent);
+    animation: pulse 2.4s ease-out infinite;
+    flex-shrink: 0;
   }
 
-  .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
-    opacity: 0;
-  }
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 55%, transparent);
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+    70% {
+      box-shadow: 0 0 0 7px transparent;
+    }
+    100% {
+      box-shadow: 0 0 0 0 transparent;
     }
   }
 
-  @keyframes glow-pulse {
-    0%, 100% {
-      opacity: 0.3;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.8;
-      transform: scale(1.02);
-    }
-  }
-
-  /* Waving hand */
-  .wave-hand {
-    display: inline-block;
-    transform-origin: 70% 70%;
-    animation: hand-wave 1.9s ease-in-out infinite;
-    will-change: transform;
-  }
-  @keyframes hand-wave {
-    0%, 100% { transform: rotate(0deg); }
-    10% { transform: rotate(14deg); }
-    20% { transform: rotate(-8deg); }
-    30% { transform: rotate(12deg); }
-    40% { transform: rotate(-6deg); }
-    50% { transform: rotate(8deg); }
-    60% { transform: rotate(-4deg); }
-    70% { transform: rotate(4deg); }
-    80% { transform: rotate(-2deg); }
-    90% { transform: rotate(2deg); }
-  }
-
-  @keyframes hand-wave-soft {
-    0%, 100% { transform: rotate(0deg); }
-    20% { transform: rotate(6deg); }
-    40% { transform: rotate(-4deg); }
-    60% { transform: rotate(5deg); }
-    80% { transform: rotate(-3deg); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .wave-hand { animation: hand-wave-soft 2.6s ease-in-out infinite; }
-  }
-
-  /* Greeting swap animation */
-  .greet { display: inline-block; will-change: transform, opacity, filter; }
-  .greet.cool {
-    background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary, #a78bfa));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 18px rgba(99,102,241,0.25);
-    background-size: 200% 100%;
-    animation: greet-sheen 7.5s linear infinite;
-    position: relative; /* for sparkle sweep */
-  }
-  .greet.swap { 
-    animation: greet-swap 520ms cubic-bezier(.2,.7,.2,1) forwards, 
-               greet-chroma 520ms ease-out forwards; 
-  }
-  /* Sparkle sweep on each swap */
-  .greet.cool::after {
-    content: '';
-    position: absolute;
-    top: -20%;
-    bottom: -20%;
-    left: 0;
-    width: 26%;
-    transform: translateX(-140%) rotate(18deg);
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
-    filter: blur(2px);
-    opacity: 0;
-    pointer-events: none;
-    mix-blend-mode: screen;
-  }
-  .greet.cool.swap::after { animation: greet-spark 650ms ease-out 1 forwards; }
-  @keyframes greet-swap {
-    0% { opacity: 0; transform: translateY(8px) scale(0.98); filter: blur(2px); }
-    60% { opacity: 1; transform: translateY(0) scale(1.02); filter: blur(0.5px); }
-    100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-  }
-
-  @keyframes greet-sheen {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-  }
-
-  @keyframes greet-spark {
-    0% { transform: translateX(-140%) rotate(18deg); opacity: 0; }
-    25% { opacity: 0.85; }
-    100% { transform: translateX(160%) rotate(18deg); opacity: 0; }
-  }
-
-  @keyframes greet-chroma {
-    0% { text-shadow: 0 0 18px rgba(99,102,241,0.25), 1px 0 0 rgba(99,102,241,0.35), -1px 0 0 rgba(16,185,129,0.25); }
-    100% { text-shadow: 0 0 18px rgba(99,102,241,0.25), 0 0 0 rgba(99,102,241,0), 0 0 0 rgba(16,185,129,0); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-  .greet.cool { animation: none; }
-  .greet.cool::after { display: none; }
-  .greet.swap { animation: greet-swap-soft 360ms ease-out forwards; }
-  }
-  @keyframes greet-swap-soft {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px) rotate(0deg);
-      opacity: 0.6;
-    }
-    33% {
-      transform: translateY(-30px) rotate(120deg);
-      opacity: 1;
-    }
-    66% {
-      transform: translateY(15px) rotate(240deg);
-      opacity: 0.8;
-    }
-  }
-
-  @keyframes float-reverse {
-    0%, 100% {
-      transform: translateY(0px) rotate(360deg);
-      opacity: 0.7;
-    }
-    33% {
-      transform: translateY(25px) rotate(240deg);
-      opacity: 1;
-    }
-    66% {
-      transform: translateY(-15px) rotate(120deg);
-      opacity: 0.9;
-    }
-  }
-
-  @keyframes geometric-float {
-    0%, 100% {
-      transform: translate(0, 0) rotate(0deg);
-      opacity: 0.5;
-    }
-    25% {
-      transform: translate(30px, -30px) rotate(90deg);
-      opacity: 0.8;
-    }
-    50% {
-      transform: translate(-15px, -50px) rotate(180deg);
-      opacity: 1;
-    }
-    75% {
-      transform: translate(-40px, -15px) rotate(270deg);
-      opacity: 0.7;
-    }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 1s ease-out forwards;
-  }
-
-  .glow-pulse {
-    animation: glow-pulse 2s ease-in-out infinite;
-  }
-
-  /* Floating Particles */
-  .floating-particle {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    /* glow removed */
-  }
-
-  .particle-1 {
-    width: 12px;
-    height: 12px;
-    top: 20%;
-    left: 10%;
-    background: linear-gradient(45deg, rgba(59, 130, 246, 0.6), rgba(147, 51, 234, 0.4));
-    border: 1px solid rgba(59, 130, 246, 0.8);
-    animation: float 6s ease-in-out infinite;
-    animation-delay: 0s;
-  }
-
-  .particle-2 {
-    width: 16px;
-    height: 16px;
-    top: 60%;
-    left: 80%;
-    background: linear-gradient(135deg, rgba(147, 51, 234, 0.6), rgba(59, 130, 246, 0.4));
-    border: 1px solid rgba(147, 51, 234, 0.8);
-    animation: float-reverse 8s ease-in-out infinite;
-    animation-delay: 1s;
-  }
-
-  .particle-3 {
-    width: 10px;
-    height: 10px;
-    top: 80%;
-    left: 20%;
-    background: linear-gradient(90deg, rgba(59, 130, 246, 0.5), rgba(16, 185, 129, 0.3));
-    border: 1px solid rgba(59, 130, 246, 0.7);
-    animation: float 7s ease-in-out infinite;
-    animation-delay: 2s;
-  }
-
-  .particle-4 {
-    width: 14px;
-    height: 14px;
-    top: 30%;
-    left: 70%;
-    background: linear-gradient(225deg, rgba(236, 72, 153, 0.5), rgba(59, 130, 246, 0.4));
-    border: 1px solid rgba(236, 72, 153, 0.7);
-    animation: float-reverse 9s ease-in-out infinite;
-    animation-delay: 3s;
-  }
-
-  .particle-5 {
-    width: 18px;
-    height: 18px;
-    top: 10%;
-    left: 60%;
-    background: linear-gradient(315deg, rgba(59, 130, 246, 0.6), rgba(99, 102, 241, 0.4));
-    border: 1px solid rgba(99, 102, 241, 0.8);
-    animation: float 5s ease-in-out infinite;
-    animation-delay: 4s;
-  }
-
-  /* Geometric Shapes */
-  .geometric-shape {
-    position: absolute;
-    border: 2px solid rgba(59, 130, 246, 0.4);
-    pointer-events: none;
-  }
-
-  .shape-1 {
-    width: 50px;
-    height: 50px;
-    top: 15%;
-    right: 15%;
-    transform: rotate(45deg);
-    animation: geometric-float 12s ease-in-out infinite;
-    animation-delay: 0s;
-    background: rgba(59, 130, 246, 0.1);
-  }
-
-  .shape-2 {
-    width: 70px;
-    height: 70px;
-    bottom: 20%;
-    left: 5%;
-    border-radius: 50%;
-    animation: geometric-float 15s ease-in-out infinite reverse;
-    animation-delay: 2s;
-    background: rgba(59, 130, 246, 0.08);
-  }
-
-  .shape-3 {
-    width: 40px;
-    height: 40px;
-    top: 50%;
-    right: 30%;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    background: rgba(59, 130, 246, 0.2);
-    border: 2px solid rgba(59, 130, 246, 0.5);
-    animation: geometric-float 10s ease-in-out infinite;
-    animation-delay: 4s;
-    box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
-  }
-
-  .animation-delay-200 {
-    animation-delay: 0.2s;
-  }
-
-  .animation-delay-400 {
-    animation-delay: 0.4s;
-  }
-
-  .animation-delay-600 {
-    animation-delay: 0.6s;
-  }
-
-  /* Profile photo hover effects */
-  .group:hover img {
-    transform: scale(1.05);
-    box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.4);
-  }
-
-  /* Social icon hover effects */
-  .social-icon {
+  /* Portrait with an offset hairline frame behind it */
+  .portrait {
     position: relative;
-    display: inline-flex;
-    padding: 8px;
-    border-radius: 12px;
-    background: rgba(59, 130, 246, 0.1);
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    aspect-ratio: 4 / 5;
+    max-width: 26rem;
+    margin-left: auto;
   }
 
-  .social-icon:hover {
-    background: rgba(59, 130, 246, 0.2);
-    border-color: rgba(59, 130, 246, 0.4);
-    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
-  }
-
-  .social-icon::before {
-    content: '';
+  .portrait::after {
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 12px;
-    background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    inset: 0;
+    translate: 14px 14px;
+    border: 1px solid var(--accent);
+    opacity: 0.5;
+    z-index: -1;
+    transition: translate 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .social-icon:hover::before {
-    opacity: 1;
+  .portrait:hover::after {
+    translate: 8px 8px;
   }
 
-  /* CV button styles */
-  .btn-cv {
-    box-shadow: 0 12px 30px -12px rgba(59,130,246,.45);
-    border: 1px solid rgba(255,255,255,0.12);
-    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
-    filter: saturate(1);
-  }
-  .btn-cv:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 20px 40px -12px rgba(59,130,246,.55);
-    filter: saturate(1.1);
-  }
-  .btn-cv:active { transform: translateY(0); }
-
-  /* Click ripple (centered) */
-  .btn-ripple { position: relative; overflow: hidden; }
-  .btn-ripple::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 0;
-    height: 0;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.25) 40%, rgba(255,255,255,0) 70%);
-    border-radius: 9999px;
-    opacity: 0;
-    transition: width .4s ease, height .4s ease, opacity .4s ease;
-  }
-  .btn-ripple:active::after {
-    width: 240px;
-    height: 240px;
-    opacity: 1;
-    transition: 0s;
+  .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: 1px solid var(--hairline);
   }
 
+  @media (max-width: 1023px) {
+    .portrait {
+      margin-left: 0;
+      max-width: 20rem;
+    }
+  }
+
+  /* Stats strip */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--hairline);
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 768px) {
+    .stats {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .stat {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--hairline-soft);
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .stat {
+      border-bottom: none;
+    }
+    .stat + .stat {
+      border-left: 1px solid var(--hairline-soft);
+      padding-left: 1.5rem;
+    }
+  }
+
+  .stat-value {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 1.4rem + 2vw, 3rem);
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0.6rem 0 0;
+  }
 </style>
-
-
-<script>
-  // Rotate greeting across common languages
-  document.addEventListener('DOMContentLoaded', () => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const greetEl = document.getElementById('greet-text');
-    if (!greetEl) return;
-  // Requested languages and order: English, French, Spanish, Italian, Persian, Chinese
-  const greetings = ['Hello!', 'Bonjour!', 'Hola!', 'Ciao!', 'سلام!', '你好！'];
-    let i = 0;
-    const swap = () => {
-      i = (i + 1) % greetings.length;
-      greetEl.classList.remove('swap');
-      void greetEl.offsetWidth;
-      greetEl.textContent = greetings[i];
-      greetEl.setAttribute('dir', 'auto');
-      greetEl.classList.add('swap');
-    };
-    greetEl.classList.add('swap');
-    const ms = prefersReduced ? 3600 : 2400;
-    const timer = setInterval(swap, ms);
-    window.addEventListener('beforeunload', () => clearInterval(timer));
-  });
-</script>

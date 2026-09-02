@@ -1,102 +1,118 @@
 ---
 import { siteConfig } from "../config";
+
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
+
+// "https://github.com/user/repo" -> "user/repo"
+const repoPath = (url: string) => url.replace(/^https?:\/\/(www\.)?github\.com\//, "");
 ---
 
 {hasProjects && (
-  <section id="projects" class="relative p-8 sm:p-12 md:p-16 lg:p-24 bg-transparent overflow-hidden clear-both">
-    
-    <div class="relative z-10 isolate">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-        <div class="lg:col-span-4">
-          <h2 class="section-title">Projects</h2>
-          <div class="section-underline" />
-        </div>
+  <section id="work" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-index">02</span>
+        <h2 class="h2">Selected work</h2>
+      </div>
 
-        <div class="lg:col-span-8">
-          <div class="space-y-8 relative z-10">
-            <!-- Mobile Grid Toggle -->
-            <div class="md:hidden mb-6">
-              <button
-                id="grid-toggle"
-                class="px-4 py-2 bg-gray-700/80 text-gray-200 rounded-lg text-sm font-medium hover:bg-gray-600/80 transition-all duration-300 border border-gray-600/40"
-              >
-                Switch to Grid View
-              </button>
+      <div>
+        {siteConfig.projects.map((project, index) => (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="row row-link project reveal"
+          >
+            <div class="project-grid">
+              <span class="project-index">{String(index + 1).padStart(2, "0")}</span>
+
+              <div>
+                <h3 class="h3 project-title">
+                  {project.name}
+                  <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 17L17 7M9 7h8v8" />
+                  </svg>
+                </h3>
+
+                <p class="prose-body mt-3">{project.description}</p>
+
+                <ul class="flex flex-wrap gap-2 mt-5">
+                  {project.skills.map((skill) => <li class="tag">{skill}</li>)}
+                </ul>
+              </div>
+
+              <span class="meta project-repo">{repoPath(project.link)}</span>
             </div>
-            
-            <div id="projects-container" class="space-y-8">
-              {siteConfig.projects.map((project, index) => (
-        <div class="group relative project-card card-base card-hover">
-                  <a
-                    href={project.link || "#"}
-                    target={project.link ? "_blank" : "_self"}
-                    rel={project.link ? "noopener noreferrer" : ""}
-          class="block relative p-6 sm:p-8 rounded-xl"
-                  >
-          <div class="card-overlay"></div>
-                    {project.link && (
-                      <div class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center bg-gray-900/80 rounded-full text-white transition-all duration-300 group-hover:bg-[var(--accent-secondary,#a78bfa)]/80">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7V17" />
-                        </svg>
-                      </div>
-                    )}
-
-                    <div class="relative z-10 space-y-4">
-                      <div>
-                        <span class="text-sm font-bold tracking-wider" style="color: var(--accent-color)">
-                          0{index + 1}
-                        </span>
-                        <h3 class="text-xl sm:text-2xl font-bold text-white mt-2">
-                          {project.name}
-                        </h3>
-                      </div>
-
-                      <p class="text-gray-300 leading-relaxed">
-                        {project.description}
-                      </p>
-
-                      {project.skills && project.skills.length > 0 && (
-                        <div class="flex flex-wrap gap-2 pt-2">
-                          {project.skills.map((skill) => (
-                            <span class="px-3 py-1.5 bg-gray-800/80 text-gray-200 rounded-lg text-sm border border-gray-600/40 transition-all duration-300 group-hover:bg-[var(--accent-secondary,#a78bfa)]/80 group-hover:text-white">
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+          </a>
+        ))}
       </div>
     </div>
-    
-    
   </section>
 )}
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.getElementById('grid-toggle');
-    const container = document.getElementById('projects-container');
-    let isGridView = false;
-    
-    if (toggleBtn && container) {
-      toggleBtn.addEventListener('click', () => {
-        isGridView = !isGridView;
-        if (isGridView) {
-          container.className = 'grid grid-cols-1 sm:grid-cols-2 gap-6';
-          toggleBtn.textContent = 'Switch to List View';
-        } else {
-          container.className = 'space-y-8';
-          toggleBtn.textContent = 'Switch to Grid View';
-        }
-      });
+<style>
+  .project {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .project-grid {
+      grid-template-columns: 4rem 1fr 14rem;
+      gap: 2rem;
+      align-items: start;
     }
-  });
-</script>
+  }
+
+  .project-index {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--muted);
+    padding-top: 0.35rem;
+    transition: color 0.3s ease;
+  }
+
+  .project:hover .project-index {
+    color: var(--accent);
+  }
+
+  .project-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: color 0.3s ease;
+  }
+
+  .project:hover .project-title {
+    color: var(--accent);
+  }
+
+  .arrow {
+    opacity: 0;
+    translate: -6px 4px;
+    transition: opacity 0.35s ease, translate 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    flex-shrink: 0;
+  }
+
+  .project:hover .arrow {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  .project-repo {
+    padding-top: 0.5rem;
+    overflow-wrap: anywhere;
+  }
+
+  @media (min-width: 768px) {
+    .project-repo {
+      text-align: right;
+    }
+  }
+</style>

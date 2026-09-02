@@ -1,199 +1,409 @@
 @import "tailwindcss";
 
-/* Custom color definitions for seamless blending */
-.from-gray-850 {
-  --tw-gradient-from: #1f2028 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(31 32 40 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
 }
-.via-gray-850 {
-  --tw-gradient-to: rgb(31 32 40 / 0)  var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), #1f2028 var(--tw-gradient-via-position), var(--tw-gradient-to);
+
+/* ---------------------------------------------------------------
+   Design tokens — light is the base, dark overrides below.
+   --accent-base is injected from siteConfig.accentColor on <html>.
+---------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+  --bg: #faf9f6;
+  --bg-elev: #ffffff;
+  --ink: #14151a;
+  --ink-2: #3d4150;
+  --muted: #6b7080;
+  --hairline: rgba(20, 21, 26, 0.14);
+  --hairline-soft: rgba(20, 21, 26, 0.08);
+  --accent: var(--accent-base, #1d4ed8);
+  --accent-contrast: #ffffff;
+  --accent-wash: color-mix(in oklab, var(--accent) 8%, transparent);
 }
-.to-gray-850 {
-  --tw-gradient-to: #1f2028 var(--tw-gradient-to-position);
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0a0b0e;
+  --bg-elev: #101216;
+  --ink: #edeef2;
+  --ink-2: #b9bec9;
+  --muted: #878d9c;
+  --hairline: rgba(255, 255, 255, 0.15);
+  --hairline-soft: rgba(255, 255, 255, 0.08);
+  --accent: color-mix(in oklab, var(--accent-base, #1d4ed8) 42%, white);
+  --accent-contrast: #0a0b0e;
+  --accent-wash: color-mix(in oklab, var(--accent) 12%, transparent);
 }
-.bg-gray-850 {
-  background-color: #1f2028;
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0a0b0e;
+    --bg-elev: #101216;
+    --ink: #edeef2;
+    --ink-2: #b9bec9;
+    --muted: #878d9c;
+    --hairline: rgba(255, 255, 255, 0.15);
+    --hairline-soft: rgba(255, 255, 255, 0.08);
+    --accent: color-mix(in oklab, var(--accent-base, #1d4ed8) 42%, white);
+    --accent-contrast: #0a0b0e;
+    --accent-wash: color-mix(in oklab, var(--accent) 12%, transparent);
+  }
+}
+
+/* ---------------------------------------------------------------
+   Base
+   Everything below sits in Tailwind's layers so utility classes
+   (e.g. `hidden`, `mt-0`) still win where they are applied.
+---------------------------------------------------------------- */
+@layer base {
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: 'IBM Plex Mono', monospace;
-  background-color: #111827; /* gray-900 */
-  color: #f9fafb; /* gray-50 */
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Scroll animations */
-.scroll-animate {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.scroll-animate.animate-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Staggered card animations */
-.card-animate {
-  opacity: 0;
-  transform: translateY(20px) scale(0.95);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.card-animate.animate-in {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-/* Enhanced glassmorphism */
-.glass-card {
-  /* Blur removed */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-/* Section defaults (no forced isolation to avoid seam artifacts over fixed background) */
-section {
-  position: relative;
-}
-
-/* Enhanced smooth scrolling */
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px;
-}
-
-/* Section blending styles */
-.section-blend {
-  background-attachment: fixed;
-  will-change: transform;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #1f2937;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #4b5563;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
-}
-
-/* Smooth focus states */
-*:focus {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
-}
-
-/* Text selection */
 ::selection {
-  background-color: rgba(59, 130, 246, 0.3);
-  color: white;
+  background: color-mix(in oklab, var(--accent) 28%, transparent);
+  color: var(--ink);
 }
 
-/* Improved button hover effects */
-.btn-hover-lift {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
-.btn-hover-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--hairline);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
 }
 
-/* Enhanced card hover effects */
-.card-hover {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+/* ---------------------------------------------------------------
+   Layout, typography and components
+---------------------------------------------------------------- */
+@layer components {
+.wrap {
+  width: min(100% - 2.5rem, 78rem);
+  margin-inline: auto;
 }
 
-.card-hover:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+@media (min-width: 768px) {
+  .wrap {
+    width: min(100% - 6rem, 78rem);
+  }
 }
 
-/* Unified UI tokens */
-:root {
-  --accent-secondary: var(--accent-secondary, #a78bfa);
-}
-
-.section-title {
-  color: #ffffff;
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-  /* clamp for responsive sizes ~ 3xl to 7xl */
-  font-size: clamp(1.875rem, 1.2rem + 2.2vw, 4.5rem);
-}
-
-.section-underline {
-  width: 75px;
-  height: 5px;
-  margin-top: 1rem;
-  border-radius: 9999px;
-  background: var(--accent-color);
-}
-
-.card-base {
-  background: linear-gradient(135deg, rgba(31, 41, 55, 0.9), rgba(55, 65, 81, 0.9));
-  border-color: rgba(75, 85, 99, 0.5);
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 0.75rem; /* rounded-xl */
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+.section {
+  padding-block: clamp(4.5rem, 3rem + 7vw, 9rem);
   position: relative;
 }
 
-.card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+/* Hairline that spans the section top */
+.section + .section {
+  border-top: 1px solid var(--hairline-soft);
 }
 
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.4);
+/* ---------------------------------------------------------------
+   Typography
+---------------------------------------------------------------- */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 1.1rem + 5.4vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  /* Long single words (surnames, URLs) must never push the page wide */
+  overflow-wrap: break-word;
 }
 
-.card-overlay {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  border-radius: 0.75rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  background: linear-gradient(90deg,
-    color-mix(in oklab, var(--accent-color) 14%, transparent),
-    color-mix(in oklab, var(--accent-secondary, #a78bfa) 14%, transparent)
-  );
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  overflow-wrap: break-word;
 }
 
-.card-hover:hover .card-overlay {
-  opacity: 1;
-}
-
-.badge-accent {
-  background: var(--accent-color);
-  color: #ffffff;
-  border-radius: 9999px;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
+.h3 {
+  font-family: var(--font-sans);
   font-weight: 600;
-  line-height: 1;
+  font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.75rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 
-.dot-accent {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 9999px;
-  background: color-mix(in oklab, var(--accent-color) 75%, white);
+.lede {
+  font-size: clamp(1.125rem, 1.03rem + 0.5vw, 1.4rem);
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 60ch;
+  text-wrap: pretty;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.meta {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+.prose-body {
+  color: var(--ink-2);
+  max-width: 68ch;
+  text-wrap: pretty;
+}
+
+/* Section heading block */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--hairline);
+  margin-bottom: clamp(2rem, 1rem + 3vw, 3.5rem);
+}
+
+.section-index {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------------
+   Components
+---------------------------------------------------------------- */
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-2);
+  border: 1px solid var(--hairline);
+  border-radius: 99px;
+  padding: 0.2rem 0.65rem;
+  white-space: nowrap;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.tag-accent {
+  color: var(--accent);
+  border-color: color-mix(in oklab, var(--accent) 35%, transparent);
+  background: var(--accent-wash);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.15rem;
+  border-radius: 2px;
+  border: 1px solid var(--hairline);
+  color: var(--ink);
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.btn:hover {
+  border-color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.btn-primary:hover {
+  border-color: var(--accent);
+  filter: brightness(1.08);
+}
+
+/* Underline that grows on hover */
+.link {
+  color: var(--ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s ease;
+  padding-bottom: 1px;
+}
+
+.link:hover {
+  background-size: 100% 1px;
+  color: var(--accent);
+}
+
+/* Editorial list row — used by experience and projects */
+.row {
+  display: block;
+  position: relative;
+  padding-block: clamp(1.75rem, 1rem + 2vw, 2.75rem);
+  border-top: 1px solid var(--hairline);
+  transition: border-color 0.3s ease;
+}
+
+.row:last-child {
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* Accent bar that slides in from the left on hover */
+.row-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  height: 1px;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.row-link:hover::before {
+  width: 100%;
+}
+
+.bullet {
+  position: relative;
+  padding-left: 1.15rem;
+  color: var(--ink-2);
+}
+
+.bullet::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 5px;
+  height: 1px;
+  background: var(--muted);
+}
+
+/* ---------------------------------------------------------------
+   Scroll reveal — one-shot, disabled for reduced motion
+---------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Scroll progress — pure CSS, no JS, no rAF loop */
+.scroll-progress {
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: var(--accent);
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: progress-grow linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+
+@keyframes progress-grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+}
+
+/* Accessibility and print overrides stay unlayered so they win. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .scroll-progress {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Print — the page doubles as a clean printable CV
+---------------------------------------------------------------- */
+@media print {
+  :root {
+    --bg: #ffffff;
+    --ink: #000000;
+    --ink-2: #1a1a1a;
+    --muted: #444444;
+    --hairline: rgba(0, 0, 0, 0.25);
+  }
+  .no-print {
+    display: none !important;
+  }
+  .section {
+    padding-block: 1.25rem;
+    break-inside: avoid;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  a {
+    text-decoration: none;
+    color: #000;
+  }
 }

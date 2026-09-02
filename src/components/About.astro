@@ -2,29 +2,46 @@
 import { siteConfig } from "../config";
 ---
 
-<section id="about" class="relative p-8 sm:p-12 md:p-16 lg:p-24 bg-transparent">
-  <div class="relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-      <div class="lg:col-span-4">
-  <h2 class="section-title">About Me</h2>
-  <div class="section-underline"></div>
+<section id="about" class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-index">01</span>
+      <h2 class="h2">About</h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+      <div class="lg:col-span-5 reveal">
+        <p class="lede">{siteConfig.aboutMe}</p>
+
+        <dl class="mt-10 space-y-3">
+          <div class="flex gap-4">
+            <dt class="eyebrow w-24 shrink-0 pt-0.5">Based in</dt>
+            <dd class="m-0 text-[0.95rem]">{siteConfig.social.location}</dd>
+          </div>
+          <div class="flex gap-4">
+            <dt class="eyebrow w-24 shrink-0 pt-0.5">Languages</dt>
+            <dd class="m-0 text-[0.95rem]">
+              {siteConfig.languages.map((lang) => `${lang.name} (${lang.level})`).join(", ")}
+            </dd>
+          </div>
+          <div class="flex gap-4">
+            <dt class="eyebrow w-24 shrink-0 pt-0.5">Studying</dt>
+            <dd class="m-0 text-[0.95rem]">M.Sc. Cybersecurity, Politecnico di Torino</dd>
+          </div>
+        </dl>
       </div>
 
-      <div class="lg:col-span-8 space-y-8">
-        <p class="text-lg sm:text-xl md:text-2xl leading-relaxed text-gray-300 font-normal tracking-wide">{siteConfig.aboutMe}</p>
-
-        <div class="pt-4">
-          <h3 class="text-xl md:text-2xl font-semibold text-white mb-6 tracking-wide">Skills & Technologies</h3>
-          <div class="flex flex-wrap gap-3">
-            {siteConfig.skills.map((skill, index) => (
-              <span
-                class="skill-chip px-4 sm:px-5 py-2 sm:py-2.5 text-gray-200 rounded-lg text-sm sm:text-base md:text-lg font-medium tracking-wide border border-gray-600/40 btn-hover-lift"
-                style={`--grad-from: var(--accent-color); --grad-to: var(--accent-secondary,#a78bfa); --border-hover: var(--accent-color); animation-delay: ${index * 0.1}s; background: linear-gradient(135deg, rgba(31,41,55,0.8), rgba(55,65,81,0.8));`}
-              >
-                <span class="relative z-10">{skill}</span>
-              </span>
-            ))}
-          </div>
+      <div class="lg:col-span-7">
+        <h3 class="eyebrow reveal">Toolkit</h3>
+        <div class="mt-6">
+          {siteConfig.skills.map((skill) => (
+            <div class="skill-row reveal">
+              <h4 class="skill-group">{skill.group}</h4>
+              <ul class="skill-items">
+                {skill.items.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -32,8 +49,53 @@ import { siteConfig } from "../config";
 </section>
 
 <style>
-  .skill-chip:hover {
-    background-image: linear-gradient(90deg, var(--grad-from), var(--grad-to));
-    border-color: var(--border-hover);
+  .skill-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding-block: 1.15rem;
+    border-top: 1px solid var(--hairline-soft);
+  }
+
+  .skill-row:last-child {
+    border-bottom: 1px solid var(--hairline-soft);
+  }
+
+  @media (min-width: 640px) {
+    .skill-row {
+      grid-template-columns: 13rem 1fr;
+      gap: 1.5rem;
+      align-items: baseline;
+    }
+  }
+
+  .skill-group {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.9rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .skill-items li {
+    font-size: 0.9rem;
+    color: var(--ink-2);
+    position: relative;
+  }
+
+  .skill-items li + li::before {
+    content: "·";
+    position: absolute;
+    left: -0.55rem;
+    color: var(--muted);
   }
 </style>

@@ -1,76 +1,78 @@
-a---
+---
 import { siteConfig } from "../config";
+
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
 ---
 
-{
-  hasExperience && (
-  <section id="experience" class="relative p-8 sm:p-12 md:p-16 lg:p-24 bg-transparent overflow-hidden">
-      
-      <div class="relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-          <div class="lg:col-span-4">
-            <h2 class="section-title">Experience</h2>
-            <div class="section-underline" />
-          </div>
-
-          <div class="lg:col-span-8">
-            <div class="relative">
-              {siteConfig.experience.map((exp, index) => (
-                <div class="relative mb-12 last:mb-0">
-                  {/* Timeline dot at top of card */}
-                  <div
-                    class="absolute left-1/2 -top-2 w-4 h-4 bg-white border-2 rounded-full -translate-x-1/2 z-20 transition-all duration-300"
-                    style={`border-color: ${siteConfig.accentColor}; background-color: ${siteConfig.accentColor}`}
-                  />
-
-                  {/* Connecting line below card */}
-                  {index < siteConfig.experience.length - 1 && (
-                    <div class="absolute left-1/2 bottom-0 w-0.5 h-12 bg-gray-300 -translate-x-1/2 translate-y-full z-10" />
-                  )}
-
-                  {/* Experience card */}
-                  <div class="relative p-6 sm:p-7 md:p-8 rounded-xl card-base card-hover group">
-                    <div class="card-overlay"></div>
-                    
-                    <div class="relative z-10">
-                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
-                      <div>
-                        <h3 class="text-xl sm:text-2xl font-bold text-white leading-tight tracking-wide">
-                          {exp.title}
-                        </h3>
-                        <p
-                          class="text-lg sm:text-xl font-medium tracking-wide mt-1"
-                          style={`color: ${siteConfig.accentColor}`}
-                        >
-                          {exp.company}
-                        </p>
-                      </div>
-                      <span class="text-sm sm:text-base text-gray-300 mt-3 sm:mt-0 font-medium tracking-wide">
-                        {exp.dateRange}
-                      </span>
-                    </div>
-
-                    <ul class="space-y-4">
-                      {exp.bullets.map((bullet) => (
-                        <li class="flex items-start">
-                          <span class="dot-accent mt-2.5 mr-4 flex-shrink-0" />
-                          <span class="text-base sm:text-lg text-gray-300 leading-relaxed tracking-wide">
-                            {bullet}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+{hasExperience && (
+  <section id="experience" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-index">03</span>
+        <h2 class="h2">Experience</h2>
       </div>
-      
-      
-    </section>
-  )
-}
+
+      <div>
+        {siteConfig.experience.map((job) => (
+          <article class="row reveal">
+            <div class="job-grid">
+              <div class="job-when">
+                <p class="meta m-0">{job.dateRange}</p>
+                <p class="meta m-0 mt-1 opacity-70">{job.location}</p>
+              </div>
+
+              <div>
+                <h3 class="h3">{job.company}</h3>
+                <p class="job-role">{job.title}</p>
+
+                {job.metrics.length > 0 && (
+                  <ul class="flex flex-wrap gap-2 mt-4">
+                    {job.metrics.map((metric) => <li class="tag tag-accent">{metric}</li>)}
+                  </ul>
+                )}
+
+                <ul class="mt-5 space-y-2.5">
+                  {job.bullets.map((bullet) => (
+                    <li class="bullet text-[0.95rem] leading-relaxed">{bullet}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .job-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 900px) {
+    .job-grid {
+      grid-template-columns: 15rem 1fr;
+      gap: 3rem;
+    }
+
+    .job-when {
+      position: sticky;
+      top: 7rem;
+    }
+  }
+
+  .job-role {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    margin: 0.4rem 0 0;
+  }
+
+  .bullet {
+    max-width: 72ch;
+  }
+</style>
