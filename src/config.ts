@@ -30,32 +30,32 @@ export const siteConfig = {
   ],
   projects: [
     {
-      name: "AWS Infrastructure as Code",
+      name: "Go Web App — DevOps Pipeline",
       description:
-        "Comprehensive Terraform modules for provisioning scalable AWS infrastructure including EC2 instances, VPC networks, RDS databases, and S3 storage. Features automated backup strategies and multi-environment deployment pipelines.",
-      link: "https://github.com/armansheikhhosseini/aws-terraform-infrastructure",
-      skills: ["Terraform", "AWS", "EC2", "VPC", "RDS", "S3", "IAM"],
+        "A Go web application demonstrating a complete DevOps pipeline: a multi-stage distroless Docker build, Kubernetes deployment via raw manifests and a Helm chart, and fully automated CI/CD with GitHub Actions.",
+      link: "https://github.com/armansheikhhosseini/go-web-app-devopsified",
+      skills: ["Go", "Docker", "Kubernetes", "Helm", "GitHub Actions"],
     },
     {
-      name: "Kubernetes DevOps Pipeline",
+      name: "Kubernetes Zero Trust Security Blueprint",
       description:
-        "Complete CI/CD pipeline implementation using Jenkins and Kubernetes for containerized applications. Includes automated testing, security scanning, deployment strategies, and monitoring with Prometheus and Grafana.",
-      link: "https://github.com/armansheikhhosseini/k8s-devops-pipeline",
-      skills: ["Kubernetes", "Jenkins", "Docker", "Prometheus", "Grafana", "Helm"],
+        "A security hardening framework for Kubernetes implementing Zero Trust Architecture and Defense in Depth across an 8-layer model, with OPA Gatekeeper policies, Falco runtime rules, Cilium network policies, and Trivy scanning.",
+      link: "https://github.com/armansheikhhosseini/k8s-zero-trust-blueprint",
+      skills: ["Kubernetes", "OPA Gatekeeper", "Falco", "Cilium", "Trivy", "Zero Trust"],
     },
     {
-      name: "Network Monitoring Dashboard",
+      name: "GitOps Demo: ArgoCD + Kubernetes",
       description:
-        "Real-time network monitoring solution using PRTG, Zabbix, and custom Python scripts. Features automated alerting, performance analytics, and comprehensive reporting for network infrastructure management.",
-      link: "https://github.com/armansheikhhosseini/network-monitoring",
-      skills: ["Python", "PRTG", "Zabbix", "SolarWinds", "Bash", "Grafana"],
+        "A complete GitOps workflow for continuous deployment of a Java Spring Boot application on Kubernetes — GitHub Actions builds and pushes images to Docker Hub, and ArgoCD keeps the cluster synchronized with the Git repository.",
+      link: "https://github.com/armansheikhhosseini/gitops-argocd-kubernetes-demo",
+      skills: ["ArgoCD", "Kubernetes", "GitOps", "GitHub Actions", "Docker", "Java/Spring Boot"],
     },
     {
-      name: "Ansible Configuration Management",
+      name: "GNSS/GPS Security and Spoofing Research",
       description:
-        "Automated configuration management playbooks for multi-environment server provisioning. Includes security hardening, application deployment, and system maintenance automation across Linux infrastructure.",
-      link: "https://github.com/armansheikhhosseini/ansible-automation",
-      skills: ["Ansible", "Linux", "Python", "YAML", "Bash", "Configuration Management"],
+        "Research into GNSS/GPS security vulnerabilities and spoofing attacks, covering signal authentication, receiver vulnerabilities, and wireless protocol analysis, with supporting tools for GPS measurement and packet capture analysis.",
+      link: "https://github.com/armansheikhhosseini/GNSS-GPS-security-and-spoofing",
+      skills: ["GNSS/GPS Security", "Wireless Security", "Packet Analysis", "MATLAB"],
     },
   ],
   experience: [
