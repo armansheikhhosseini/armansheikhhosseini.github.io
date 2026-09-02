@@ -140,7 +140,7 @@
         \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
         \LenToUnit{\paperheight-1.0 cm}
     ){\vtop{{\null}\makebox[0pt][c]{
-    \small\color{gray}\textit{Last updated in September 2025}\hspace{\widthof{Last updated in September 2025}}
+    \small\color{gray}\textit{Last updated in September 2026}\hspace{\widthof{Last updated in September 2026}}
     }}}%
   }%
 }%
@@ -167,7 +167,7 @@
                 \fontsize{25 pt}{25 pt}\selectfont Arman Sheikhhosseini
 
                 \vspace{3 pt}
-                {\Large\bfseries DevOps Engineer}
+                {\Large\bfseries Cloud and DevOps Engineer}
                 \vspace{3 pt}
 
                 \normalsize
@@ -200,10 +200,29 @@
 
             \section{Professional Summary}
                 \begin{onecolentry}
-                    DevOps engineer focused on reliable, scalable AWS platforms with Infrastructure as Code (Terraform, Ansible), containers (Docker, Kubernetes), and CI/CD (Jenkins, GitLab). Delivered 60\% faster provisioning, 25\% lower MTTR via Prometheus/Grafana observability, and sustained 99.9\% uptime supported by automated backups and disciplined incident response. Strong Bash/Python automation with a networking foundation from NOC operations; security-minded and currently an M.Sc. Cybersecurity candidate at Politecnico di Torino.
+                    Cloud and DevOps Engineer with 6+ years of experience building, automating, and operating reliable cloud platforms. Strong focus on Infrastructure as Code (Terraform, AWS CDK), CI/CD automation, system design, and security-aware operations. Hands-on experience with AWS, Kubernetes, Linux systems, networking, and monitoring. Proven ability to design scalable, highly available architectures, standardize deployments, and cut manual work. M.Sc. Cybersecurity candidate at Politecnico di Torino.
                 \end{onecolentry}
 
             \section{Experience}
+                % Arzamed
+                \begin{twocolentry}{Mar 2026 -- Present}
+                    \textbf{Cloud and DevOps Engineer}, Arzamed
+                \end{twocolentry}
+                \vspace{0.10 cm}
+                \begin{onecolentry}
+                    \begin{highlights}
+                        \item Architected and built a greenfield AWS platform for a healthcare SaaS using Infrastructure as Code (AWS CDK): a multi-account, multi-environment design with a private Amazon EKS cluster, Aurora PostgreSQL, ECR, Secrets Manager, and CloudFront/S3 static sites --- cutting environment provisioning time by 70\% and eliminating configuration drift.
+                        \item Implemented GitOps continuous delivery for 30+ microservices with Argo CD and Helm, reducing manual release steps by 80\% and enabling same-day rollbacks.
+                        \item Set up monitoring and alerting on Amazon CloudWatch (dashboards, metric-based alarms, SNS email/SMS notifications), lowering mean time to detect incidents by 40\% and cutting observability costs by 30\% through instrumentation tuning.
+                        \item Delivered a public external API from scratch --- Amazon API Gateway with VPC-linked routing, token- and key-based authorizers, per-tenant rate limiting, and throttling --- opening a new integration channel for third-party partners.
+                        \item Built API-key management and usage-based billing (quota tracking, threshold alert emails, Stripe checkout/webhook integration for plan changes and renewals), enabling a new metered revenue stream.
+                        \item Hardened authentication with Amazon Cognito (enforced MFA, scoped access, IRSA workload identity) and branded Amazon SES email templates for verification and one-time passwords.
+                        \item Provisioned a WAF-protected developer portal on CloudFront/S3 and authored its bilingual (IT/EN) API documentation.
+                    \end{highlights}
+                \end{onecolentry}
+
+                \vspace{0.2 cm}
+
                 % Torob
                 \begin{twocolentry}{Nov 2022 -- Present}
                     \textbf{DevOps Engineer}, Torob
@@ -211,14 +230,29 @@
                 \vspace{0.10 cm}
                 \begin{onecolentry}
                     \begin{highlights}
-                        \item Provisioned and deployed highly available AWS infrastructure (EC2, VPC, IAM, Redshift, EBS, RDS, Route~53) using Terraform, enhancing scalability and reliability while reducing provisioning time by 60\%.
-                        \item Implemented automated backup and recovery processes utilizing AWS Backup and Amazon S3 versioning, ensuring data integrity and availability in compliance with industry best practices.
-                        \item Deployed and automated configuration management using Ansible, streamlining setup across environments and eliminating repetitive manual tasks.
-                        \item Optimized system monitoring and alerting with Prometheus and Grafana dashboards, achieving a 25\% reduction in mean time to resolution (MTTR) and enabling proactive incident handling.
-                        \item Automated daily infrastructure tasks using Rundeck, encompassing AWS service management and backups, thereby improving operational efficiency and consistency.
-                        \item Containerized services with Docker, accelerating deployment cycles and simplifying environment management.
-                        \item Developed scripts in Bash and Python for system automation, reducing manual errors and saving developer hours.
-                        \item Administered Jenkins CI/CD pipelines, performing routine maintenance, updates, configuration, and cloud configuration tasks.
+                        \item Designed and operated AWS cloud environments with a strong focus on automation, reliability, and controlled deployments.
+                        \item Implemented Infrastructure as Code using Terraform (modular design, state management, versioning) to provision and manage AWS resources, reducing provisioning time by 60\%.
+                        \item Built and maintained CI/CD pipelines (Jenkins, GitLab CI, Git-based workflows), cutting deployment time by 40\% and enabling safe rollouts and rollbacks across environments.
+                        \item Standardized deployments across dev/test/prod, eliminating configuration drift and supporting sustained 99.9\% service availability.
+                        \item Implemented monitoring and alerting using Prometheus, Grafana, and CloudWatch, reducing mean time to resolution by 25\%.
+                        \item Managed Linux systems, networking, TLS certificates, reverse proxies, and access controls.
+                        \item Collaborated closely with development teams in agile environments to improve delivery and platform reliability.
+                    \end{highlights}
+                \end{onecolentry}
+
+                \vspace{0.2 cm}
+
+                % KiTalent
+                \begin{twocolentry}{Sep 2025 -- Nov 2025}
+                    \textbf{DevOps Engineer (Part-time)}, KiTalent
+                \end{twocolentry}
+                \vspace{0.10 cm}
+                \begin{onecolentry}
+                    \begin{highlights}
+                        \item Designed and operated containerized environments using Docker.
+                        \item Automated environment provisioning and deployment workflows to reduce manual intervention.
+                        \item Implemented ingress and routing using Traefik, including secure access and environment separation.
+                        \item Improved operational stability through health checks, restart policies, and configuration standardization.
                     \end{highlights}
                 \end{onecolentry}
 
@@ -248,11 +282,9 @@
                 \vspace{0.10 cm}
                 \begin{onecolentry}
                     \begin{highlights}
-                        \item Resolved an average of 50+ technical support tickets per week, maintaining a 95\% customer satisfaction rating.
-                        \item Conducted regular system and software updates, preventing potential downtimes and enhancing system performance by 20\%.
-                        \item Collaborated with cross-functional teams to identify and resolve recurring technical issues, leading to a 30\% reduction in repeat tickets.
-                        \item Maintained comprehensive documentation of technical issues and resolutions, streamlining knowledge sharing and reducing resolution time by 15\%.
-                        \item Utilized remote support tools like Zendesk and TeamViewer to troubleshoot and resolve customer issues efficiently.
+                        \item Provided Linux and system-level support for internal and customer-facing platforms.
+                        \item Resolved complex incidents under time pressure while maintaining service quality.
+                        \item Documented recurring issues to improve operational efficiency.
                     \end{highlights}
                 \end{onecolentry}
 
@@ -262,19 +294,27 @@
                 \end{twocolentry}
 
                 \vspace{0.10 cm}
-                \begin{twocolentry}{Sep 2018 -- Apr 2018}
+                \begin{twocolentry}{Sep 2014 -- Apr 2018}
                     \textbf{Azad University}, Bachelor of Computer Software Engineering
                 \end{twocolentry}
 
             \section{Skills}
                 \begin{onecolentry}
-                    \textbf{Skills:} Cloud computing expertise; Web server management (Apache, Nginx); CI/CD practices (GitLab, Jenkins); Container orchestration (Docker, Kubernetes); Infrastructure as code (Terraform, Ansible); Scripting (Python, Bash); Monitoring solutions (CloudWatch, Prometheus, Grafana); AWS services (EC2, VPC, S3, RDS, Lambda); Unix/Linux administration.
+                    \textbf{Cloud platforms:} AWS (EKS, EC2, VPC, IAM, S3, RDS/Aurora, Lambda, API Gateway, CloudFront, Route~53, CloudWatch, Cognito, SES, SNS, WAF) \\
+                    \textbf{Infrastructure as Code:} Terraform (modules, state, workspaces), AWS CDK \\
+                    \textbf{CI/CD and GitOps:} Jenkins, GitLab CI, GitHub Actions, Argo CD, Helm \\
+                    \textbf{Containers and orchestration:} Kubernetes (CKA certified), Amazon EKS, Docker \\
+                    \textbf{System design:} scalable, highly available distributed systems; multi-account/multi-environment architecture; capacity planning and cost optimization; failure-domain isolation \\
+                    \textbf{Scripting and automation:} Bash, Python \\
+                    \textbf{Linux administration and troubleshooting} \\
+                    \textbf{Networking and security fundamentals:} IAM/RBAC, DNS, TLS, VPCs, security groups, firewalls, WAF \\
+                    \textbf{Monitoring and observability:} CloudWatch, Prometheus, Grafana, OpenTelemetry
                 \end{onecolentry}
 
             \section{Certifications}
                 \begin{onecolentry}
-                    Cisco Certified Network Associate Security (CCNA) \;\;\; \textbullet\; Linux Professional Institute LPIC-1 \;\;\; \textbullet\; Linux Professional Institute LPIC-2 \\
-                    Microsoft Certified Systems Administrator (MCSA) \;\;\; \textbullet\; CompTIA Security+ \;\;\; \textbullet\; Certified Kubernetes Administrator (CKA) \;\;\; \textbullet\; AWS Certified DevOps Engineer
+                    AWS Certified DevOps Engineer \;\;\; \textbullet\; Certified Kubernetes Administrator (CKA) \;\;\; \textbullet\; CompTIA Security+ \\
+                    Linux Professional Institute LPIC-2 \;\;\; \textbullet\; Linux Professional Institute LPIC-1 \;\;\; \textbullet\; Cisco Certified Network Associate Security (CCNA)
                 \end{onecolentry}
 
             \section{Languages}

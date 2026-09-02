@@ -1,13 +1,14 @@
 export const siteConfig = {
   name: "Arman Sheikhhosseini",
-  title: "DevOps Engineer",
-  description: "DevOps Engineer with five years of experience finding solutions and determining customer satisfaction. Adept in developing products for web design, user experience, and best practices and speed.",
+  title: "Cloud and DevOps Engineer",
+  description: "Cloud and DevOps Engineer with 6+ years of experience building, automating, and operating reliable cloud platforms on AWS and Kubernetes.",
   accentColor: "#1d4ed8",
   // Public path to your PDF CV (place the file in the `public/` folder)
   cvUrl: "/ARMAN_SHEIKHHOSSEINI_CV.pdf",
   social: {
     email: "arman.sheikhhosseini@gmail.com",
-    location: "Turin, Piedmont",
+    phone: "+39 379 268 2755",
+    location: "Turin, Italy",
     linkedin: "https://www.linkedin.com/in/thearmansh/",
     twitter: "https://x.com/thearmansh",
     telegram: "https://t.me/thearmanssh",
@@ -15,17 +16,17 @@ export const siteConfig = {
     website: "https://armansheikhhosseini.github.io/",
   },
   aboutMe:
-    "DevOps Engineer with five years of experience finding solutions and determining customer satisfaction. Adept in developing products for web design, user experience, and best practices and speed. Currently pursuing Master's in Cybersecurity at Politecnico di Torino while working with cutting-edge cloud technologies and infrastructure automation.",
+    "Cloud and DevOps Engineer with 6+ years of experience building, automating, and operating reliable cloud platforms. Strong focus on Infrastructure as Code (Terraform, AWS CDK), CI/CD automation, system design, and security-aware operations. Hands-on experience with AWS, Kubernetes, Linux systems, networking, and monitoring. Proven ability to design scalable, highly available architectures, standardize deployments, and cut manual work. M.Sc. Cybersecurity candidate at Politecnico di Torino.",
   skills: [
-    "AWS Services (EC2, VPC, S3, RDS, Lambda)",
-    "Infrastructure as Code (Terraform, Ansible)",
-    "Container Orchestration (Docker, Kubernetes)",
-    "CI/CD Practices (GitLab, Jenkins)",
-    "Monitoring Solutions (Prometheus, Grafana, CloudWatch)",
-    "Scripting Languages (Python, Bash)",
-    "Web Server Management (Apache, Nginx)",
-    "Unix/Linux Administration",
-    "Cloud Computing Expertise"
+    "AWS Services (EKS, EC2, VPC, IAM, S3, RDS/Aurora, Lambda, API Gateway, CloudFront, Route 53, CloudWatch, Cognito, SES, SNS, WAF)",
+    "Infrastructure as Code (Terraform, AWS CDK)",
+    "CI/CD & GitOps (Jenkins, GitLab CI, GitHub Actions, Argo CD, Helm)",
+    "Container Orchestration (Kubernetes, Amazon EKS, Docker)",
+    "System Design (Scalable, Highly Available Architectures)",
+    "Scripting Languages (Bash, Python)",
+    "Linux Administration & Troubleshooting",
+    "Networking & Security Fundamentals (IAM/RBAC, DNS, TLS, VPCs, WAF)",
+    "Monitoring & Observability (CloudWatch, Prometheus, Grafana, OpenTelemetry)"
   ],
   projects: [
     {
@@ -59,18 +60,42 @@ export const siteConfig = {
   ],
   experience: [
     {
+      company: "Arzamed",
+      title: "Cloud and DevOps Engineer",
+      dateRange: "Mar 2026 - Present",
+      bullets: [
+        "Architected and built a greenfield AWS platform for a healthcare SaaS using Infrastructure as Code (AWS CDK): a multi-account, multi-environment design with a private Amazon EKS cluster, Aurora PostgreSQL, ECR, Secrets Manager, and CloudFront/S3 static sites — cutting environment provisioning time by 70% and eliminating configuration drift",
+        "Implemented GitOps continuous delivery for 30+ microservices with Argo CD and Helm, reducing manual release steps by 80% and enabling same-day rollbacks",
+        "Set up monitoring and alerting on Amazon CloudWatch (dashboards, metric-based alarms, SNS email/SMS notifications), lowering mean time to detect incidents by 40% and cutting observability costs by 30% through instrumentation tuning",
+        "Delivered a public external API from scratch — Amazon API Gateway with VPC-linked routing, token- and key-based authorizers, per-tenant rate limiting, and throttling — opening a new integration channel for third-party partners",
+        "Built API-key management and usage-based billing (quota tracking, threshold alert emails, Stripe checkout/webhook integration for plan changes and renewals), enabling a new metered revenue stream",
+        "Hardened authentication with Amazon Cognito (enforced MFA, scoped access, IRSA workload identity) and branded Amazon SES email templates for verification and one-time passwords",
+        "Provisioned a WAF-protected developer portal on CloudFront/S3 and authored its bilingual (IT/EN) API documentation"
+      ],
+    },
+    {
       company: "Torob",
       title: "DevOps Engineer",
       dateRange: "Nov 2022 - Present",
       bullets: [
-        "Provisioned and deployed highly available AWS infrastructure (EC2, VPC, IAM, Redshift, EBS, RDS, Route 53) using Terraform, enhancing scalability and reliability while reducing provisioning time by 60%",
-        "Implemented automated backup and recovery processes utilizing AWS Backup and Amazon S3 versioning, ensuring data integrity and availability in compliance with industry best practices",
-        "Deployed and automated configuration management using Ansible, streamlining setup across environments and eliminating repetitive manual tasks",
-        "Optimized system monitoring and alerting with Prometheus and Grafana dashboards, achieving a 25% reduction in mean time to resolution (MTTR) and enabling proactive incident handling",
-        "Automated daily infrastructure tasks using Rundeck, encompassing AWS service management and backups, thereby improving operational efficiency and consistency",
-        "Containerized services with Docker, accelerating deployment cycles and simplifying environment management",
-        "Developed scripts in Bash and Python for system automation, reducing manual errors and saving developer hours",
-        "Administered Jenkins CI/CD pipelines, performing routine maintenance, updates, configuration, and cloud configuration tasks"
+        "Designed and operated AWS cloud environments with a strong focus on automation, reliability, and controlled deployments",
+        "Implemented Infrastructure as Code using Terraform (modular design, state management, versioning) to provision and manage AWS resources, reducing provisioning time by 60%",
+        "Built and maintained CI/CD pipelines (Jenkins, GitLab CI, Git-based workflows), cutting deployment time by 40% and enabling safe rollouts and rollbacks across environments",
+        "Standardized deployments across dev/test/prod, eliminating configuration drift and supporting sustained 99.9% service availability",
+        "Implemented monitoring and alerting using Prometheus, Grafana, and CloudWatch, reducing mean time to resolution by 25%",
+        "Managed Linux systems, networking, TLS certificates, reverse proxies, and access controls",
+        "Collaborated closely with development teams in agile environments to improve delivery and platform reliability"
+      ],
+    },
+    {
+      company: "KiTalent",
+      title: "DevOps Engineer (Part-time)",
+      dateRange: "Sep 2025 - Nov 2025",
+      bullets: [
+        "Designed and operated containerized environments using Docker",
+        "Automated environment provisioning and deployment workflows to reduce manual intervention",
+        "Implemented ingress and routing using Traefik, including secure access and environment separation",
+        "Improved operational stability through health checks, restart policies, and configuration standardization"
       ],
     },
     {
@@ -90,11 +115,9 @@ export const siteConfig = {
       title: "Technical Support Specialist",
       dateRange: "Jun 2018 - Jul 2020",
       bullets: [
-        "Resolved an average of 50+ technical support tickets per week, maintaining a 95% customer satisfaction rating",
-        "Conducted regular system and software updates, preventing potential downtimes and enhancing system performance by 20%",
-        "Collaborated with cross-functional teams to identify and resolve recurring technical issues, leading to a 30% reduction in repeat tickets",
-        "Maintained comprehensive documentation of technical issues and resolutions, streamlining knowledge sharing and reducing resolution time by 15%",
-        "Utilized remote support tools like Zendesk and TeamViewer to troubleshoot and resolve customer issues efficiently"
+        "Provided Linux and system-level support for internal and customer-facing platforms",
+        "Resolved complex incidents under time pressure while maintaining service quality",
+        "Documented recurring issues to improve operational efficiency"
       ],
     },
   ],
@@ -102,7 +125,7 @@ export const siteConfig = {
     {
       school: "Politecnico di Torino",
       degree: "Master's in Cybersecurity",
-      dateRange: "Expected graduation Jan 2026",
+      dateRange: "Sep 2024 - Jul 2026",
       achievements: [
         "Currently pursuing advanced studies in cybersecurity",
         "Focus on cloud security and infrastructure protection",
@@ -112,7 +135,7 @@ export const siteConfig = {
     {
       school: "Azad University",
       degree: "Bachelor of Computer Software Engineering",
-      dateRange: "Graduated Jan 2018",
+      dateRange: "Sep 2014 - Apr 2018",
       achievements: [
         "Specialized in software development and system design",
         "Strong foundation in computer science fundamentals",
@@ -132,19 +155,9 @@ export const siteConfig = {
       category: "Container Orchestration",
     },
     {
-      name: "Cisco Certified Network Associate Security (CCNA)",
-      issuer: "Cisco",
-      category: "Network Security",
-    },
-    {
       name: "CompTIA Security+",
       issuer: "CompTIA",
       category: "Cybersecurity",
-    },
-    {
-      name: "Linux Professional Institute LPIC-1",
-      issuer: "Linux Professional Institute",
-      category: "Linux Administration",
     },
     {
       name: "Linux Professional Institute LPIC-2",
@@ -152,9 +165,14 @@ export const siteConfig = {
       category: "Advanced Linux",
     },
     {
-      name: "Microsoft Certified Systems Administrator (MCSA)",
-      issuer: "Microsoft",
-      category: "Windows Administration",
+      name: "Linux Professional Institute LPIC-1",
+      issuer: "Linux Professional Institute",
+      category: "Linux Administration",
+    },
+    {
+      name: "Cisco Certified Network Associate Security (CCNA)",
+      issuer: "Cisco",
+      category: "Network Security",
     },
   ],
 };

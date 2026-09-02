@@ -1,6 +1,6 @@
-ARMAN SHEIKH HOSSEINI
+ARMAN SHEIKHHOSSEINI
 
-DevOps Engineer
+Cloud and DevOps Engineer
 
 Contact
 
@@ -21,21 +21,41 @@ https://armansheikhhosseini.github.io/
 
 Professional Summary
 
-DevOps Engineer with five years of experience finding solutions and determining customer satisfaction. Adept in developing products for web design, user experience, and best practices and speed.
+Cloud and DevOps Engineer with 6+ years of experience building, automating, and operating reliable cloud platforms. Strong focus on Infrastructure as Code (Terraform, AWS CDK), CI/CD automation, system design, and security-aware operations. Hands-on experience with AWS, Kubernetes, Linux systems, networking, and monitoring. Proven ability to design scalable, highly available architectures, standardize deployments, and cut manual work. M.Sc. Cybersecurity candidate at Politecnico di Torino.
 
 Experience
+
+Cloud and DevOps Engineer
+ArzamedMar 2026 - Present
+Turin, Italy
+
+Architected and built a greenfield AWS platform for a healthcare SaaS using Infrastructure as Code (AWS CDK): a multi-account, multi-environment design with a private Amazon EKS cluster, Aurora PostgreSQL, ECR, Secrets Manager, and CloudFront/S3 static sites — cutting environment provisioning time by 70% and eliminating configuration drift.
+Implemented GitOps continuous delivery for 30+ microservices with Argo CD and Helm, reducing manual release steps by 80% and enabling same-day rollbacks.
+Set up monitoring and alerting on Amazon CloudWatch (dashboards, metric-based alarms, SNS email/SMS notifications), lowering mean time to detect incidents by 40% and cutting observability costs by 30% through instrumentation tuning.
+Delivered a public external API from scratch — Amazon API Gateway with VPC-linked routing, token- and key-based authorizers, per-tenant rate limiting, and throttling — opening a new integration channel for third-party partners.
+Built API-key management and usage-based billing (quota tracking, threshold alert emails, Stripe checkout/webhook integration for plan changes and renewals), enabling a new metered revenue stream.
+Hardened authentication with Amazon Cognito (enforced MFA, scoped access, IRSA workload identity) and branded Amazon SES email templates for verification and one-time passwords.
+Provisioned a WAF-protected developer portal on CloudFront/S3 and authored its bilingual (IT/EN) API documentation.
 
 DevOps Engineer
 TorobNov 2022 - Present
 
-Provisioned and deployed highly available AWS infrastructure (EC2, VPC, IAM, Redshift, EBS, RDS, Route 53) using Terraform, enhancing scalability and reliability while reducing provisioning time by 60%.
-Implemented automated backup and recovery processes utilizing AWS Backup and Amazon S3 versioning, ensuring data integrity and availability in compliance with industry best practices.
-Deployed and automated configuration management using Ansible, streamlining setup across environments and eliminating repetitive manual tasks.
-Optimized system monitoring and alerting with Prometheus and Grafana dashboards, achieving a 25% reduction in mean time to resolution (MTTR) and enabling proactive incident handling.
-Automated daily infrastructure tasks using Rundeck, encompassing AWS service management and backups, thereby improving operational efficiency and consistency.
-Containerized services with Docker, accelerating deployment cycles and simplifying environment management.
-Developed scripts in Bash and Python for system automation, reducing manual errors and saving developer hours (e.g., scripting data backups and routine checks).
-Administered Jenkins CI/CD pipelines, performing routine maintenance, updates, configuration, and cloud configuration tasks to ensure seamless and reliable builds.
+Designed and operated AWS cloud environments with a strong focus on automation, reliability, and controlled deployments.
+Implemented Infrastructure as Code using Terraform (modular design, state management, versioning) to provision and manage AWS resources, reducing provisioning time by 60%.
+Built and maintained CI/CD pipelines (Jenkins, GitLab CI, Git-based workflows), cutting deployment time by 40% and enabling safe rollouts and rollbacks across environments.
+Standardized deployments across dev/test/prod, eliminating configuration drift and supporting sustained 99.9% service availability.
+Implemented monitoring and alerting using Prometheus, Grafana, and CloudWatch, reducing mean time to resolution by 25%.
+Managed Linux systems, networking, TLS certificates, reverse proxies, and access controls.
+Collaborated closely with development teams in agile environments to improve delivery and platform reliability.
+
+DevOps Engineer (Part-time)
+KiTalentSep 2025 - Nov 2025
+Turin, Piedmont, Italy
+
+Designed and operated containerized environments using Docker.
+Automated environment provisioning and deployment workflows to reduce manual intervention.
+Implemented ingress and routing using Traefik, including secure access and environment separation.
+Improved operational stability through health checks, restart policies, and configuration standardization.
 
 Network Operations Center Engineer
 ShatelJul 2020 - Sep 2022
@@ -49,50 +69,47 @@ Maintained comprehensive network documentation and incident reports, ensuring co
 Technical Support Specialist
 ShatelJun 2018 - Jul 2020
 
-Resolved an average of 50+ technical support tickets per week, maintaining a 95% customer satisfaction rating.
-Conducted regular system and software updates, preventing potential downtimes and enhancing system performance by 20%.
-Collaborated with cross-functional teams to identify and resolve recurring technical issues, leading to a 30% reduction in repeat tickets.
-Maintained comprehensive documentation of technical issues and resolutions, streamlining knowledge sharing and reducing resolution time by 15%.
-Utilized remote support tools like Zendesk and TeamViewer to troubleshoot and resolve customer issues efficiently.
+Provided Linux and system-level support for internal and customer-facing platforms.
+Resolved complex incidents under time pressure while maintaining service quality.
+Documented recurring issues to improve operational efficiency.
 
 Education
 
 POLITECNICO DI TORINO
 
-Expected graduation Jan 2026
+Sep 2024 - Jul 2026
 
-Master Cybersecurity Candidate
+Master's in Cybersecurity (Candidate)
 
 AZAD UNIVERSITY
 
-Jan 2018
+Sep 2014 - Apr 2018
 
 Bachelor
 Computer Software Engineering
 
 Skills
 
-Cloud computing expertise
-Web server management (Apache, Nginx)
-CI/CD practices (GitLab, Jenkins)
-Container orchestration (Docker, Kubernetes)
-Infrastructure as code (Terraform, Ansible)
-Scripting languages (Python, Bash)
-Monitoring solutions (CloudWatch, Prometheus, Grafana)
-AWS services (EC2, VPC, S3, RDS, Lambda)
-Unix/Linux administration
+Cloud platforms: AWS (EKS, EC2, VPC, IAM, S3, RDS/Aurora, Lambda, API Gateway, CloudFront, Route 53, CloudWatch, Cognito, SES, SNS, WAF)
+Infrastructure as Code: Terraform (modules, state, workspaces), AWS CDK
+CI/CD and GitOps: Jenkins, GitLab CI, GitHub Actions, Argo CD, Helm
+Containers and orchestration: Kubernetes (CKA certified), Amazon EKS, Docker
+System design: scalable, highly available distributed systems; multi-account/multi-environment architecture; capacity planning and cost optimization; failure-domain isolation
+Scripting and automation: Bash, Python
+Linux administration and troubleshooting
+Networking and security fundamentals (IAM/RBAC, DNS, TLS, VPCs, security groups, firewalls, WAF)
+Monitoring and observability: CloudWatch, Prometheus, Grafana, OpenTelemetry
 
 Certifications
 
-Cisco Certified Network Associate Security (CCNA)
-Linux Professional Institute LPIC-1
-Linux Professional Institute LPIC-2
-Microsoft Certified Systems Administrator (MCSA)
-CompTIA Security+
-Certified Kubernetes Administrator (CKA)
 AWS Certified DevOps Engineer
+Certified Kubernetes Administrator (CKA)
+CompTIA Security+
+Linux Professional Institute LPIC-2
+Linux Professional Institute LPIC-1
+Cisco Certified Network Associate Security (CCNA)
 
 Languages
 
-English, Fluent 
-Italian, Intermediate 
+English, Fluent
+Italian, Intermediate
